@@ -1,10 +1,10 @@
 <?php
 require "../../src/bootstrap.php";
 
-$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ?? null;
+$data["id"] = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ?? null;
 
 if (isset($cms)) {
-  $article = $cms->getArticle()->fetch($id);
+  $data["article"] = $cms->getArticle()->fetch($data["id"], false);
 }
 
 
@@ -13,11 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   try {
     // Wenn ein Bild vorhanden ist, muss zunächst die Bild ID auf null gesetzt werden um es löschen zu können.
-    if ($article["image_id"]) {
+    if ($data["article"]["image_id"]) {
       // Prüfen, ob das Bild noch für andere Artikel verwendet wird
-      $imageUsed = $cms->getArticle()->imageInUse($article["image_id"]);
+      $imageUsed = $cms->getArticle()->imageInUse($data["article"]["image_file"]);
 
-      $image_path = get_file_path($article["image_file"], "", true);
+      $image_path = get_file_path($data["article"]["image_file"], "", true);
 
       $stmt = $cms->getArticle()->setImageIdNull($art_id);
 
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         unlink($image_path);
 
         // Löschen des Bildes aus der Datenbank
-        $cms->getImage()->deleteArticleImage($article["image_id"]);
+        $cms->getImage()->deleteArticleImage($data["article"]["image_id"]);
       }
     }
 
@@ -42,22 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
-?>
+echo $twig->render("admin/article-delete.html", $data);
 
-<?php include "../includes/header-admin.php"; ?>
 
-<main class="container w-auto mx-auto md:w-1/2 flex justify-center flex-col items-center p-5">
-    <h1 class="text-4xl text-blue-500 mb-8">Are you sure you want to delete the article <?= $article["title"] ?>?</h1>
-    <div class="flex justify-center items-center">
-        <form action="article-delete.php?id=<?= $id ?>" method="post">
-            <input type="hidden" name="id" id="id" value="<?= $id ?>">
-            <button type="submit" class=" text-white bg-pink-600 p-3 m-2 rounded-md">Yes</button>
-        </form>
-        <form action="articles.php">
-            <button type="submit" class="text-white bg-blue-500 p-3 m-2 rounded-md ">No</button>
-        </form>
-    </div>
-
-</main>
-
-<?php include "../includes/footer-admin.php" ?>

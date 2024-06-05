@@ -50,13 +50,13 @@ function get_file_path(string $filename, string $path, bool $admin = false): str
   $basename = preg_replace("/[^A-z0-9]/", "-", $basename);
   $i = 0;
   while (file_exists($path . $filename)) {
-    $i++;
-    $filename = $basename . $i . "." . $extension;
+    $extra = "(" . $i++ . ")";
+    $filename = $basename . $extra . "." . $extension;
   }
   if ($admin) {
     return dirname(__DIR__, 1) . "/public/uploads/" . $filename;
   }
-  return __DIR__ . "/uploads/" . $filename;
+  return dirname(__DIR__, 1) . "/public/uploads/" . $filename;
 }
 
 function scale_and_copy(string $filename, string $save_to, $max_width = 300, $max_height = 300): bool
@@ -85,13 +85,11 @@ function scale_and_copy(string $filename, string $save_to, $max_width = 300, $ma
   };
   $thumb = imagecreatetruecolor($width, $height);
 
-
   imagecopyresampled($thumb, $source, 0, 0, 0, 0, $width, $height, $orig_width, $orig_height);
 
   match ($mime_type) {
     IMAGETYPE_JPEG => imagejpeg($thumb, $save_to),
-    IMAGETYPE_PNG => imagepng($thumb, $save_to),
-    default => false
+    IMAGETYPE_PNG => imagepng($thumb, $save_to)
   };
   imagedestroy($thumb);
   imagedestroy($source);

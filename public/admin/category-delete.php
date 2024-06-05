@@ -1,10 +1,10 @@
 <?php
 require "../../src/bootstrap.php";
 
-$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ?? null;
+$data["id"] = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ?? null;
 
 if (isset($cms)) {
-  $category = $cms->getCategory()->fetch($id);
+  $data["category"] = $cms->getCategory()->fetch($data["id"]);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -16,31 +16,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } catch (PDOException $e) {
     $error = $e->errorInfo[1];
     if ($error == "1451") {
-      $categoryName = $category['name'];
+      $categoryName = $data["category"]['name'];
       redirect("categories.php", ["error" => "Category $categoryName can not be removed, there are articles in the Category"]);
     }
   }
 }
 
-?>
+echo $twig->render("admin/category-delete.html", $data);
 
-<?php include "../includes/header-admin.php"; ?>
 
-<main class="container w-auto mx-auto md:w-1/2 flex justify-center flex-col items-center p-5">
-    <h1 class="text-4xl text-blue-500 mb-8">Are you sure you want to delete the category <?= $category["name"] ?>?</h1>
-    <div class="flex justify-center items-center">
-        <form action="category-delete.php?id=<?= $id ?>" method="post">
-            <input type="hidden" name="id" id="id" value="<?= $id ?>">
-            <button type="submit" class=" text-white bg-pink-600 p-3 m-2 rounded-md">Yes</button>
-        </form>
-        <form action="categories.php">
-            <button type="submit" class="text-white bg-blue-500 p-3 m-2 rounded-md ">No</button>
-        </form>
-    </div>
-
-</main>
-
-<?php include "../includes/footer-admin.php" ?>
 
 
 

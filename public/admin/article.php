@@ -6,17 +6,17 @@ use EdvGraz\Validation\Validate;
 
 // Variablen initialisieren für Bildupload
 
-$path_to_img = "/uploads/";
+$path_to_img = dirname(__DIR__, 1) . "/uploads/";
 $allowed_types = ["image/jpeg", "image/png"];
 $allowed_extensions = ["jpeg", "jpg", "png"];
 $max_size = 1920 * 1080 * 2;
 
-$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT) ?? "";
+$data["id"] = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT) ?? "";
 $tmp_path = $_FILES["image_file"]["tmp_name"] ?? "";
 $save_to = "";
 
-$article = [
-  "id" => $id,
+$data["article"] = [
+  "id" => $data["id"],
   "title" => "",
   "summary" => "",
   "content" => "",
@@ -28,7 +28,7 @@ $article = [
   "image_alt" => ""
 ];
 
-$errors = [
+$data["errors"] = [
   "issue" => "",
   "title" => "",
   "summary" => "",
@@ -42,11 +42,11 @@ $errors = [
 // Lade alle Kategorien von der Datenbank
 
 if (isset($cms)) {
-  $categories = $cms->getCategory()->getAll();
-  $users = $cms->getUser()->getAll();
-  if ($id) {
-    $article = $cms->getArticle()->fetch($id, false);
-    if (!$article) {
+  $data["categories"] = $cms->getCategory()->getAll();
+  $data["users"] = $cms->getUser()->getAll();
+  if ($data["id"]) {
+    $data["article"] = $cms->getArticle()->fetch($data["id"], false);
+    if (!$data["article"]) {
       redirect("articles.php", ["error" => "article not found"]);
     }
   }
@@ -64,34 +64,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Wenn ein Bild hochgeladen wurde, dann wird es validiert
     if ($tmp_path && $image["error"] === UPLOAD_ERR_OK) {
       // Alt-Text wird gesetzt
-      $article["image_alt"] = filter_input(INPUT_POST, "image_alt");
+      $data["article"]["image_alt"] = filter_input(INPUT_POST, "image_alt");
       // Alt-Text validieren
-      $errors["image_alt"] = Validate::isText($article["image_alt"], 1, 254) ? "" : "Alt text must be between 1 and 254 characters";
+      $data["errors"]["image_alt"] = Validate::isText($data["article"]["image_alt"], 1, 254) ? "" : "Alt text must be between 1 and 254 characters";
 
       // Bildtyp wird validiert
       $typ = mime_content_type($tmp_path);
-      $errors["image_file"] .= in_array($typ, $allowed_types) ? "" : "The file type is not allowed";
+      $data["errors"]["image_file"] .= in_array($typ, $allowed_types) ? "" : "The file type is not allowed";
       // Bildendung wird validiert
       $extension = pathinfo(strtolower($image["name"]), PATHINFO_EXTENSION);
-      $errors["image_file"] .= in_array($extension, $allowed_extensions) ? "" : "The file extension $extension is not allowed";
+      $data["errors"]["image_file"] .= in_array($extension, $allowed_extensions) ? "" : "The file extension $extension is not allowed";
       // Bildgröße wird validiert
-      $errors["image_file"] .= $image["size"] > $max_size ? "The image exceeds the maximum upload size ($max_size Bytes)" : "";
+      $data["errors"]["image_file"] .= $image["size"] > $max_size ? "The image exceeds the maximum upload size ($max_size Bytes)" : "";
 
       // Wenn es keine Fehler gibt, wird ein Speicherort für das Bild festgelegt
-      if ($errors["image_file"] === "" && $errors["image_alt"] === "") {
-        $article["image_file"] = $image["name"];
+      if ($data["errors"]["image_file"] === "" && $data["errors"]["image_alt"] === "") {
+        $data["article"]["image_file"] = $image["name"];
         $save_to = get_file_path($image["name"], $path_to_img, true);
       }
     }
   }
 
   // Daten aus dem Formular auslesen
-  $article["title"] = filter_input(INPUT_POST, "title");
-  $article["summary"] = filter_input(INPUT_POST, "summary");
-  $article["content"] = filter_input(INPUT_POST, "content");
-  $article["user_id"] = filter_input(INPUT_POST, "user_id", FILTER_VALIDATE_INT);
-  $article["category_id"] = filter_input(INPUT_POST, "category_id", FILTER_VALIDATE_INT);
-  $article["published"] = filter_input(INPUT_POST, "published", FILTER_VALIDATE_BOOLEAN) ? 1 : 0;
+  $data["article"]["title"] = filter_input(INPUT_POST, "title");
+  $data["article"]["summary"] = filter_input(INPUT_POST, "summary");
+  $data["article"]["content"] = filter_input(INPUT_POST, "content");
+  $data["article"]["user_id"] = filter_input(INPUT_POST, "user_id", FILTER_VALIDATE_INT);
+  $data["article"]["category_id"] = filter_input(INPUT_POST, "category_id", FILTER_VALIDATE_INT);
+  $data["article"]["published"] = filter_input(INPUT_POST, "published", FILTER_VALIDATE_BOOLEAN) ? 1 : 0;
 
   // HTML-Code wird bereinigt
   $purifier = new HTMLPurifier();
@@ -100,27 +100,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $purifier->config->set("HTML.Allowed", "p,br,strong,em,a[href],i,u,ul,ol,li,img[src|alt]");
 
   // Purifier wird auf den Content angewendet.
-  $article["content"] = $purifier->purify($article["content"]);
+  $data["article"]["content"] = $purifier->purify($data["article"]["content"]);
 
   // Error-Meldung erstellen und zusätzliche Validierung
-  $errors["title"] = Validate::isText($article["title"]) ? "" : "Title must be between 1 and 100 characters";
-  $errors["summary"] = Validate::isText($article["summary"], 1, 200) ? "" : "Summary must be between 1 and 200 characters";
-  $errors["content"] = Validate::isText($article["content"], 1, 10000) ? "" : "Content must be between 1 and 10000 characters";
-  $errors["user"] = Validate::is_user_id($article["user_id"], $users) ? "" : "User not found";
-  $errors["category"] = Validate::is_category($article["category_id"], $categories) ? "" : "Category not found";
+  $data["errors"]["title"] = Validate::isText($data["article"]["title"]) ? "" : "Title must be between 1 and 100 characters";
+  $data["errors"]["summary"] = Validate::isText($data["article"]["summary"], 1, 200) ? "" : "Summary must be between 1 and 200 characters";
+  $data["errors"]["content"] = Validate::isText($data["article"]["content"], 1, 10000) ? "" : "Content must be between 1 and 10000 characters";
+  $data["errors"]["user"] = Validate::is_user_id($data["article"]["user_id"], $data["users"]) ? "" : "User not found";
+  $data["errors"]["category"] = Validate::is_category($data["article"]["category_id"], $data["categories"]) ? "" : "Category not found";
 
-  $problems = implode($errors);
+  $problems = implode($data["errors"]);
 
   if (!$problems) {
     // bindings beinhaltet alle Variablen die der Funktion Statement::bindvalue übergeben werden (oder auch Statement::execute als Array)
-    $bindings = $article;
+    $bindings = $data["article"];
     try {
 
       // Wenn ein Bild hochgeladen wurde, wird es gespeichert
       if ($save_to) {
         scale_and_copy($tmp_path, $save_to);
 
-        $stmt = $cms->getImage()->push($article["image_file"], $article["image_alt"]);
+        $stmt = $cms->getImage()->push($data["article"]["image_file"], $data["article"]["image_alt"]);
         // lastInsertId gibt die ID des zuletzt eingefügten Datensatzes zurück
         $bindings["images_id"] = $cms->getImage()->getLatestImageId()["LAST_INSERT_ID()"];
       }
@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       unset($bindings["image_file"], $bindings["image_alt"]);
 
       // Code, wenn ein Artikel bearbeitet wurde
-      if ($id) {
+      if ($data["id"]) {
         // Wenn die ID vorhanden ist, wird ein UPDATE durchgeführt und die ID wird wieder in das bindings Array aufgenommen.
         unset($bindings["author"], $bindings["created"], $bindings["category"], $bindings["image_id"]);
         $cms->getArticle()->update($bindings);
@@ -145,87 +145,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       redirect("articles.php", ["success" => "Article successfully saved"]);
     } catch (PDOException $e) {
 
-      $errors["issue"] = $e->getMessage();
+      $data["errors"]["issue"] = $e->getMessage();
     }
   }
 }
 
-?>
+echo $twig->render("admin/article.html", $data);
 
-<?php include '../includes/header-admin.php'; ?>
-<main class="p-10">
-    <h2 class="text-3xl text-blue-500 mb-8 text-center"><?= $article['id'] ? 'Edit ' : 'New ' ?>Article</h2>
-  <?php if ($errors['issue']): ?>
-      <p class="error text-red-500 bg-red-200 p-5 rounded-md"><?= $errors['issue'] ?></p>
-  <?php endif ?>
-    <form action="article.php?id=<?= e($id) ?>" method="POST" enctype="multipart/form-data"
-          class="grid gap-6 mb-6 md:grid-cols-2 md:w-full">
-        <div>
-            <label class="block mb-2 text-sm font-medium text-gray-900 pt-2" for="title">Title</label>
-            <input type="text" id="title" name="title" value="<?= e($article['title']) ?>"
-                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-            <span class="text-red-500"><?= $errors['title'] ?></span>
-            <label class="block mb-2 text-sm font-medium text-gray-900 pt-2" for="summary">Summary</label>
-            <textarea id="summary" name="summary"
-                      class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"><?= e($article['summary']) ?></textarea>
-            <span class="text-red-500"><?= $errors['summary'] ?></span>
-            <label class="block mb-2 text-sm font-medium text-gray-900 pt-2" for="content">Content</label>
-            <textarea id="content" rows="10" name="content"
-                      class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"><?= $article['content'] ?></textarea>
-            <span class="text-red-500"><?= $errors['content'] ?></span>
-        </div>
-        <div>
-            <label class="block mb-2 text-sm font-medium text-gray-900 pt-2" for="category">Category</label>
-            <select id="category_id" name="category_id"
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
-                <option>select category</option>
-              <?php foreach ($categories as $category): ?>
-                  <option value="<?= $category['id'] ?>" <?= $category['id'] === $article['category_id'] ? 'selected' : '' ?>><?= e($category['name']) ?></option>
-              <?php endforeach; ?>
-            </select>
-            <span class="text-red-500"><?= $errors['category'] ?></span>
-            <label class="block mb-2 text-sm font-medium text-gray-900 pt-2" for="user_id">User</label>
-            <select id="user_id" name="user_id"
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
-                <option>select user</option>
-              <?php foreach ($users as $user): ?>
-                  <option value="<?= $user['id'] ?>" <?= $user['id'] === $article['user_id'] ? 'selected' : '' ?>><?= e($user['forename']) ?> <?= e($user['surname']) ?></option>
-              <?php endforeach; ?>
-            </select>
-            <span class="text-red-500"><?= $errors['user'] ?></span>
-          <?php if (!$article['image_file']) : ?>
-              <label class="block mb-2 text-sm font-medium text-gray-900" for="image_file pt-2">Image</label>
-              <input type="file" id="image_file" accept="image/jpeg, image/png" name="image_file"
-                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-              <span class="text-red-500"><?= $errors['image_file'] ?></span>
-          <?php else: ?>
-              <img src="../uploads/<?= e($article['image_file']) ?>" alt="<?= e($article['image_alt']) ?>"
-                   class="w-full h-auto"/>
-              <span>Alt Text: <?= e($article['image_alt']) ?></span>
-              <a href="alt-text-edit.php?id=<?= e($article['id']) ?>" class="text-blue-500">Edit Alt Text</a>
-              <a href="img-delete.php?id=<?= e($article['id']) ?>" class="text-red-500">Delete Image</a>
-          <?php endif; ?>
-            <label class="block mb-2 text-sm font-medium text-gray-900 pt-2" for="image_alt">Image Alt</label>
-            <input type="text" id="image_alt" name="image_alt" value="<?= e($article['image_alt'] ?? '') ?>"
-                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-            <span class="text-red-500"><?= $errors['image_alt'] ?></span>
-            <label class="block mb-2 text-sm font-medium text-gray-900 pt-2" for="published">Published</label>
-            <input type="checkbox" id="published" name="published" <?= $article['published'] ? 'checked' : '' ?>
-                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600">
-        </div>
-        <button type="submit" class="text-white bg-blue-500 p-3 rounded-md hover:bg-pink-600">Save</button>
-    </form>
-</main>
-
-<script>
-    tinymce.init({
-        selector: "#content",
-        menubar: false,
-        toolbar: "bold italic underline link",
-        plugins: "link",
-        link_title: false
-    })
-</script>
-
-<?php include '../includes/footer-admin.php'; ?>
 

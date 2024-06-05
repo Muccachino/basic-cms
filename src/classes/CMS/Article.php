@@ -71,14 +71,13 @@ class Article
 
   }
 
-  public function imageInUse(int $id): bool
+  public function imageInUse(string $filename): bool
   {
-
-    $sql = "SELECT COUNT(images_id) FROM articles 
-            WHERE images_id = :id";
-    $count = $this->db->sql_execute($sql, ["id" => $id])->fetch();
-
-    return $count["COUNT(images_id)"] > 1 ? true : false;
+    $sql = "SELECT COUNT(filename)
+            FROM images
+            WHERE filename = :filename";
+    $count = $this->db->sql_execute($sql, ["filename" => $filename])->fetch();
+    return $count["COUNT(filename)"] > 1 ? true : false;
   }
 
   public function fetch(int $id, bool $published = true): array

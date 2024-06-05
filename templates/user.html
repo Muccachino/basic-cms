@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ category.name }}{% endblock %}
+{% block description %} {{category.description}} {% endblock %}
+
+{% block content %}
+
+<main class="container mx-auto mt-10 mb-10">
+    <section>
+        <h1 class="text-3xl text-center">{{user.forename}} {{user.surname}}</h1>
+        <p class="text-center text-gray-500">Joined: {{user.joined|date('d M. Y')}}</p>
+        {% if user.profile_pic %}
+        <img alt="Profile Picture" class="mx-auto" src="{{doc_root}}uploads/{{user.profile_pic}}">
+        {% else %}
+        <img alt="No Image available" src="{{doc_root}}img/placeholder.jpg">
+        {% endif %}
+    </section>
+    {% block articles %}
+    <section class="flex flex-wrap p-8" id="content">
+        {% include 'article-list.html' %}
+    </section>
+    {% endblock %}
+</main>
+
+{% endblock %}
