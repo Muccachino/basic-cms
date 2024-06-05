@@ -2,7 +2,7 @@
 const DEV_MODE = true;
 const DOC_ROOT = "/cms_system/public/";
 const ROOT_FOLDER = "/public/";
-
+//test
 // Database Connection
 $type = "mysql";
 $host = "localhost";
