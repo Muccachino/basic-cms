@@ -887,12 +887,20 @@ video {
   height: 1.25rem;
 }
 
+.h-6 {
+  height: 1.5rem;
+}
+
 .h-auto {
   height: auto;
 }
 
 .w-10 {
   width: 2.5rem;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
 }
 
 .w-4 {
@@ -2353,6 +2361,11 @@ video {
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
+.text-gray-800 {
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
@@ -2747,6 +2760,10 @@ video {
 
 .forced-color-adjust-none {
   forced-color-adjust: none;
+}
+
+.\[hostname\:port\] {
+  hostname: port;
 }
 
 @media (min-width: 640px) {

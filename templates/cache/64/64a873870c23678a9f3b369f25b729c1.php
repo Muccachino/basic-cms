@@ -84,14 +84,9 @@ class __TwigTemplate_bf5e4ecdce5e51403292e4c4406215b1 extends Template
 ";
         // line 13
         yield from $this->unwrap()->yieldBlock('articles', $context, $blocks);
-        // line 18
-        yield "
-
-";
         return; yield '';
     }
 
-    // line 13
     public function block_articles($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -127,7 +122,7 @@ class __TwigTemplate_bf5e4ecdce5e51403292e4c4406215b1 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  104 => 16,  102 => 15,  99 => 14,  95 => 13,  88 => 18,  86 => 13,  80 => 10,  76 => 9,  72 => 7,  68 => 6,  58 => 4,  50 => 3,  39 => 1,);
+        return array (  99 => 16,  97 => 15,  94 => 14,  86 => 13,  80 => 10,  76 => 9,  72 => 7,  68 => 6,  58 => 4,  50 => 3,  39 => 1,);
     }
 
     public function getSourceContext()
@@ -149,8 +144,9 @@ class __TwigTemplate_bf5e4ecdce5e51403292e4c4406215b1 extends Template
     {% include 'article-list.html' %}
 </section>
 {% endblock %}
+{% endblock %}
 
 
-{% endblock %}", "category.html", "C:\\xampp\\htdocs\\cms_system\\templates\\category.html");
+", "category.html", "C:\\xampp\\htdocs\\cms_system\\templates\\category.html");
     }
 }

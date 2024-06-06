@@ -146,9 +146,18 @@ class __TwigTemplate_ffea5017b5ffc8abffad088433994377 extends Template
         // line 58
         yield from $this->unwrap()->yieldBlock('content', $context, $blocks);
         // line 60
-        yield "<footer>
-    <div class=\"mx-auto bg-slate-50  p-4\">
-        &copy; edvgraz <?= date( 'Y' ); ?>
+        yield "<footer class=\"mx-auto bg-slate-50 p-4 flex justify-around\">
+    <div>
+        &copy; edvgraz ";
+        // line 62
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y"), "html", null, true);
+        yield "
+    </div>
+    <div>
+        <a href=\"";
+        // line 65
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
+        yield "contact.php\">Contact</a>
     </div>
 </footer>
 </body>
@@ -203,7 +212,7 @@ class __TwigTemplate_ffea5017b5ffc8abffad088433994377 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  179 => 58,  171 => 7,  163 => 6,  149 => 60,  147 => 58,  135 => 49,  130 => 47,  126 => 46,  123 => 45,  113 => 41,  107 => 40,  104 => 39,  100 => 38,  96 => 36,  92 => 35,  70 => 16,  66 => 15,  57 => 9,  52 => 7,  48 => 6,  41 => 1,);
+        return array (  188 => 58,  180 => 7,  172 => 6,  159 => 65,  153 => 62,  149 => 60,  147 => 58,  135 => 49,  130 => 47,  126 => 46,  123 => 45,  113 => 41,  107 => 40,  104 => 39,  100 => 38,  96 => 36,  92 => 35,  70 => 16,  66 => 15,  57 => 9,  52 => 7,  48 => 6,  41 => 1,);
     }
 
     public function getSourceContext()
@@ -267,9 +276,12 @@ class __TwigTemplate_ffea5017b5ffc8abffad088433994377 extends Template
 </header>
 {% block content %}
 {% endblock %}
-<footer>
-    <div class=\"mx-auto bg-slate-50  p-4\">
-        &copy; edvgraz <?= date( 'Y' ); ?>
+<footer class=\"mx-auto bg-slate-50 p-4 flex justify-around\">
+    <div>
+        &copy; edvgraz {{ 'now'|date('Y') }}
+    </div>
+    <div>
+        <a href=\"{{doc_root}}contact.php\">Contact</a>
     </div>
 </footer>
 </body>

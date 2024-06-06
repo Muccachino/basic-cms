@@ -18,3 +18,14 @@ const FILE_EXTENSIONS = ["jpg", "jpeg", "png"];
 const MAX_FILE_SIZE = 1024 * 1024 * 2;
 
 define("UPLOAD_DIR", dirname(__DIR__, 1) . DIRECTORY_SEPARATOR . ROOT_FOLDER . DIRECTORY_SEPARATOR);
+
+// Mail Settings
+$mail_config = [
+  "host" => "vela.ssl.hosttech.eu",     // smtp server - Postausgangsserver
+  "port" => 456,                        // Port kann auch 587 sein
+  "username" => "cms@staszewski.net",   // Benutzername des Mail Accounts
+  "password" => "secret",               // Passwort des Mail Accounts
+  "sec" => "ssl",                       // Verschlüsselung kann auch tls sein
+  "admin_mail" => "cms@staszewski.net", // Empfänger der Mail
+  "debug" => (DEV_MODE ? 2 : 0)         // Debug Level, zeigt nach dem Senden Bericht auf der Webseite an
+];
