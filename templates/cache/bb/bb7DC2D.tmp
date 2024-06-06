@@ -101,25 +101,33 @@ class __TwigTemplate_2165ce9b352c06cefb7c82cf67fc9268 extends Template
         }
         // line 17
         yield "    </section>
-    ";
+    <p>";
         // line 18
-        if ((CoreExtension::getAttribute($this->env, $this->source, ($context["session"] ?? null), "id", [], "any", false, false, false, 18) == CoreExtension::getAttribute($this->env, $this->source, ($context["user"] ?? null), "id", [], "any", false, false, false, 18))) {
-            // line 19
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["session"] ?? null), "id", [], "any", false, false, false, 18), "html", null, true);
+        yield "</p>
+    <p>";
+        // line 19
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["user"] ?? null), "id", [], "any", false, false, false, 19), "html", null, true);
+        yield "</p>
+    ";
+        // line 20
+        if ((CoreExtension::getAttribute($this->env, $this->source, ($context["session"] ?? null), "id", [], "any", false, false, false, 20) == CoreExtension::getAttribute($this->env, $this->source, ($context["user"] ?? null), "id", [], "any", false, false, false, 20))) {
+            // line 21
             yield "    <div class=\"flex justify-center\">
         <a class=\"text-white bg-pink-600 hover:bg-blue-600 p-2 rounded-md m-2\" href=\"";
-            // line 20
+            // line 22
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
             yield "edit-user-profile.php\">
             Edit Profile
         </a>
         <a class=\"text-white bg-pink-600 hover:bg-blue-600 p-2 rounded-md m-2\" href=\"";
-            // line 23
+            // line 25
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
             yield "edit-article.php\">
             Add Article
         </a>
         <a class=\"text-white bg-pink-600 hover:bg-blue-600 p-2 rounded-md m-2\" href=\"";
-            // line 26
+            // line 28
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
             yield "edit-profile-pic.php\">
             Edit Profile Picture
@@ -127,28 +135,28 @@ class __TwigTemplate_2165ce9b352c06cefb7c82cf67fc9268 extends Template
     </div>
     ";
         }
-        // line 31
+        // line 33
         yield "
     ";
-        // line 32
+        // line 34
         yield from $this->unwrap()->yieldBlock('articles', $context, $blocks);
-        // line 37
+        // line 39
         yield "</main>
 
 ";
         return; yield '';
     }
 
-    // line 32
+    // line 34
     public function block_articles($context, array $blocks = [])
     {
         $macros = $this->macros;
-        // line 33
+        // line 35
         yield "    <section class=\"flex flex-wrap p-8\" id=\"content\">
         ";
-        // line 34
-        yield from         $this->loadTemplate("article-list.html", "user.html", 34)->unwrap()->yield($context);
-        // line 35
+        // line 36
+        yield from         $this->loadTemplate("article-list.html", "user.html", 36)->unwrap()->yield($context);
+        // line 37
         yield "    </section>
     ";
         return; yield '';
@@ -175,7 +183,7 @@ class __TwigTemplate_2165ce9b352c06cefb7c82cf67fc9268 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  152 => 35,  150 => 34,  147 => 33,  143 => 32,  136 => 37,  134 => 32,  131 => 31,  123 => 26,  117 => 23,  111 => 20,  108 => 19,  106 => 18,  103 => 17,  97 => 15,  89 => 13,  87 => 12,  83 => 11,  77 => 10,  72 => 7,  68 => 6,  58 => 4,  50 => 3,  39 => 1,);
+        return array (  160 => 37,  158 => 36,  155 => 35,  151 => 34,  144 => 39,  142 => 34,  139 => 33,  131 => 28,  125 => 25,  119 => 22,  116 => 21,  114 => 20,  110 => 19,  106 => 18,  103 => 17,  97 => 15,  89 => 13,  87 => 12,  83 => 11,  77 => 10,  72 => 7,  68 => 6,  58 => 4,  50 => 3,  39 => 1,);
     }
 
     public function getSourceContext()
@@ -197,6 +205,8 @@ class __TwigTemplate_2165ce9b352c06cefb7c82cf67fc9268 extends Template
         <img alt=\"No Image available\" src=\"{{doc_root}}img/placeholder.jpg\">
         {% endif %}
     </section>
+    <p>{{session.id}}</p>
+    <p>{{user.id}}</p>
     {% if session.id == user.id %}
     <div class=\"flex justify-center\">
         <a class=\"text-white bg-pink-600 hover:bg-blue-600 p-2 rounded-md m-2\" href=\"{{doc_root}}edit-user-profile.php\">

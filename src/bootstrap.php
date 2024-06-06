@@ -30,3 +30,6 @@ if (DEV_MODE) {
 
 $cms = new CMS($dsn, $user_name, $password);
 unset($dsn, $user_name, $password);
+
+$session = $cms->getSession();
+$twig->addGlobal("session", $session);

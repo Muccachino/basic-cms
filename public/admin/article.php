@@ -3,6 +3,8 @@ require "../../src/bootstrap.php";
 
 use EdvGraz\Validation\Validate;
 
+is_admin($session->role);
+
 
 // Variablen initialisieren für Bildupload
 

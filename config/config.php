@@ -3,6 +3,8 @@ const DEV_MODE = true;
 const DOC_ROOT = "/cms_system/public/";
 const ROOT_FOLDER = "/public/";
 
+const DOMAIN = "http://localhost";
+
 // Database Connection
 $type = "mysql";
 $host = "localhost";

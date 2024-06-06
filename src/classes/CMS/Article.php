@@ -135,4 +135,14 @@ class Article
     }
   }
 
+  public function count(string $search = ""): int
+  {
+    $sql = "SELECT COUNT(id) FROM articles WHERE published = 1";
+
+    if ($search) {
+      $sql = "SELECT COUNT(id) FROM articles WHERE published = 1 AND (title LIKE :search OR summary LIKE :search OR content LIKE :search);";
+      return $this->db->sql_execute($sql, ["search" => "%$search%"])->fetchColumn();
+    }
+    return $this->db->sql_execute($sql)->fetchColumn();
+  }
 }

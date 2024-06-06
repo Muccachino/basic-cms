@@ -19,6 +19,7 @@ if (isset($cms)) {
   $data["description"] = $data["title"];
   $data["section"] = "";
 
+
   echo $twig->render('user.html', $data);
 }
 

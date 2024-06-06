@@ -15,6 +15,20 @@
         <img alt="No Image available" src="{{doc_root}}img/placeholder.jpg">
         {% endif %}
     </section>
+    {% if session.id == user.id %}
+    <div class="flex justify-center">
+        <a class="text-white bg-pink-600 hover:bg-blue-600 p-2 rounded-md m-2" href="{{doc_root}}edit-user-profile.php">
+            Edit Profile
+        </a>
+        <a class="text-white bg-pink-600 hover:bg-blue-600 p-2 rounded-md m-2" href="{{doc_root}}edit-article.php">
+            Add Article
+        </a>
+        <a class="text-white bg-pink-600 hover:bg-blue-600 p-2 rounded-md m-2" href="{{doc_root}}edit-profile-pic.php">
+            Edit Profile Picture
+        </a>
+    </div>
+    {% endif %}
+
     {% block articles %}
     <section class="flex flex-wrap p-8" id="content">
         {% include 'article-list.html' %}

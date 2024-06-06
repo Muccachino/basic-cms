@@ -5,7 +5,7 @@
         <img alt="{{article.image_alt}}" class="mt-5"
              src="{{doc_root}}uploads/{{article.image_file}}">
         {% else %}
-        <img alt="No image available" src="{{doc_root}}img/placeholder.php">
+        <img alt="No image available" src="{{doc_root}}img/placeholder.jpg">
         {% endif %}
         <h2 class="text-blue-500 text-2xl pt-3 pb-1.5">{{article.title}}</h2>
         <p class="text-gray-500 pb-2.5">{{article.summary}}</p>
@@ -18,5 +18,13 @@
         {{article.author}}
     </a>
     </p>
+    {% if (session.id == article.user_id) %}
+    <p class="edit mt-4">
+        <a class="text-white bg-pink-600 hover:bg-blue-600 p-2 rounded-md mt-2"
+           href="{{doc_root}}edit-article.php?id={{article.id}}">Edit</a>
+    </p>
+    {% endif %}
 </article>
+
+
 {% endfor %}

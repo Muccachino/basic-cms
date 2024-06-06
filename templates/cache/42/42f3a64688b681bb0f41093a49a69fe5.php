@@ -64,7 +64,7 @@ class __TwigTemplate_6e8ab1d8ed6b7b30bc606f7ca4cabd7e extends Template
                 // line 8
                 yield "        <img alt=\"No image available\" src=\"";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-                yield "img/placeholder.php\">
+                yield "img/placeholder.jpg\">
         ";
             }
             // line 10
@@ -100,7 +100,25 @@ class __TwigTemplate_6e8ab1d8ed6b7b30bc606f7ca4cabd7e extends Template
             yield "
     </a>
     </p>
-</article>
+    ";
+            // line 21
+            if ((CoreExtension::getAttribute($this->env, $this->source, ($context["session"] ?? null), "id", [], "any", false, false, false, 21) == CoreExtension::getAttribute($this->env, $this->source, $context["article"], "user_id", [], "any", false, false, false, 21))) {
+                // line 22
+                yield "    <p class=\"edit mt-4\">
+        <a class=\"text-white bg-pink-600 hover:bg-blue-600 p-2 rounded-md mt-2\"
+           href=\"";
+                // line 24
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
+                yield "edit-article.php?id=";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["article"], "id", [], "any", false, false, false, 24), "html", null, true);
+                yield "\">Edit</a>
+    </p>
+    ";
+            }
+            // line 27
+            yield "</article>
+
+
 ";
         }
         $_parent = $context['_parent'];
@@ -130,7 +148,7 @@ class __TwigTemplate_6e8ab1d8ed6b7b30bc606f7ca4cabd7e extends Template
      */
     public function getDebugInfo()
     {
-        return array (  99 => 18,  93 => 17,  88 => 15,  82 => 14,  76 => 11,  71 => 10,  65 => 8,  58 => 6,  53 => 5,  51 => 4,  45 => 3,  42 => 2,  38 => 1,);
+        return array (  119 => 27,  111 => 24,  107 => 22,  105 => 21,  99 => 18,  93 => 17,  88 => 15,  82 => 14,  76 => 11,  71 => 10,  65 => 8,  58 => 6,  53 => 5,  51 => 4,  45 => 3,  42 => 2,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -142,7 +160,7 @@ class __TwigTemplate_6e8ab1d8ed6b7b30bc606f7ca4cabd7e extends Template
         <img alt=\"{{article.image_alt}}\" class=\"mt-5\"
              src=\"{{doc_root}}uploads/{{article.image_file}}\">
         {% else %}
-        <img alt=\"No image available\" src=\"{{doc_root}}img/placeholder.php\">
+        <img alt=\"No image available\" src=\"{{doc_root}}img/placeholder.jpg\">
         {% endif %}
         <h2 class=\"text-blue-500 text-2xl pt-3 pb-1.5\">{{article.title}}</h2>
         <p class=\"text-gray-500 pb-2.5\">{{article.summary}}</p>
@@ -155,7 +173,16 @@ class __TwigTemplate_6e8ab1d8ed6b7b30bc606f7ca4cabd7e extends Template
         {{article.author}}
     </a>
     </p>
+    {% if (session.id == article.user_id) %}
+    <p class=\"edit mt-4\">
+        <a class=\"text-white bg-pink-600 hover:bg-blue-600 p-2 rounded-md mt-2\"
+           href=\"{{doc_root}}edit-article.php?id={{article.id}}\">Edit</a>
+    </p>
+    {% endif %}
 </article>
-{% endfor %}", "article-list.html", "C:\\xampp\\htdocs\\cms_system\\templates\\article-list.html");
+
+
+{% endfor %}
+", "article-list.html", "C:\\xampp\\htdocs\\cms_system\\templates\\article-list.html");
     }
 }

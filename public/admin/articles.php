@@ -1,6 +1,9 @@
 <?php
 require "../../src/bootstrap.php";
 
+is_admin($session->role);
+
+
 if (isset($cms)) {
   $data["articles"] = $cms->getArticle()->getAll(null, false);
 }

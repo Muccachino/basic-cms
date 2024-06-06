@@ -59,14 +59,71 @@ class __TwigTemplate_ffea5017b5ffc8abffad088433994377 extends Template
 </head>
 <body>
 <header class=\"bg-white border-gray-200 dark:bg-gray-900 border-b-4\">
+    <nav class=\"log-in register bg-gray-100\">
+        ";
+        // line 14
+        if ((CoreExtension::getAttribute($this->env, $this->source, ($context["session"] ?? null), "id", [], "any", false, false, false, 14) == 0)) {
+            // line 15
+            yield "        <ul class=\"flex justify-end p-1\">
+            <li class=\"p-1\">
+                <a class=\"text-pink-600 hover:text-blue-600\" href=\"";
+            // line 17
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
+            yield "login.php\">Login</a>
+            </li>
+            <li class=\"p-1\">
+                <a class=\"text-pink-600 hover:text-blue-600\" href=\"";
+            // line 20
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
+            yield "register.php\">Register</a>
+            </li>
+        </ul>
+        ";
+        } else {
+            // line 24
+            yield "        <ul class=\"flex justify-end p-1\">
+            <li class=\"p-1\">
+                <a class=\"text-pink-600 hover:text-blue-600\" href=\"";
+            // line 26
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
+            yield "user.php?id=";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["session"] ?? null), "id", [], "any", false, false, false, 26), "html", null, true);
+            yield "\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["session"] ?? null), "forename", [], "any", false, false, false, 26), "html", null, true);
+            yield "</a>
+            </li>
+            ";
+            // line 28
+            if ((CoreExtension::getAttribute($this->env, $this->source, ($context["session"] ?? null), "role", [], "any", false, false, false, 28) == "admin")) {
+                // line 29
+                yield "            <li class=\"p-1\">
+                <a class=\"text-pink-600 hover:text-blue-600\" href=\"";
+                // line 30
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
+                yield "admin/index.php\">Admin</a>
+            </li>
+            ";
+            }
+            // line 33
+            yield "            <li class=\"p-1\">
+                <a class=\"text-pink-600 hover:text-blue-600\" href=\"";
+            // line 34
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
+            yield "logout.php\">Logout</a>
+            </li>
+            ";
+        }
+        // line 37
+        yield "        </ul>
+    </nav>
     <div class=\"max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4\">
         <div class=\"logo\">
             <a class=\"flex items-center space-x-3 rtl:space-x-reverse\" href=\"";
-        // line 15
+        // line 41
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
         yield "index.php\">
                 <img alt=\"IT-Logo\" src=\"";
-        // line 16
+        // line 42
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
         yield "img/page-logo.png\" width=\"100\">
                 <span class=\"self-center text-2xl font-semibold whitespace-nowrap dark:text-white\">IT-News-Blog</span>
@@ -88,29 +145,29 @@ class __TwigTemplate_ffea5017b5ffc8abffad088433994377 extends Template
                 <ul class=\"font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700\"
                     id=\"menu\">
                     ";
-        // line 35
+        // line 61
         $context['_parent'] = $context;
         $context['_seq'] = CoreExtension::ensureTraversable(($context["navigation"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["link"]) {
-            // line 36
+            // line 62
             yield "                    <li>
                         <a class=\"block py-2 px-3 text-blue-600 bg-blue-700 rounded
                          ";
-            // line 38
-            if ((CoreExtension::getAttribute($this->env, $this->source, $context["link"], "id", [], "any", false, false, false, 38) == CoreExtension::getAttribute($this->env, $this->source, ($context["articles"] ?? null), "category_id", [], "any", false, false, false, 38))) {
+            // line 64
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["link"], "id", [], "any", false, false, false, 64) == CoreExtension::getAttribute($this->env, $this->source, ($context["articles"] ?? null), "category_id", [], "any", false, false, false, 64))) {
                 yield "text-pink-600";
             }
-            // line 39
+            // line 65
             yield "                          hover:text-pink-600 md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500\"
                            href=\"";
-            // line 40
+            // line 66
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
             yield "category.php?id=";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["link"], "id", [], "any", false, false, false, 40), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["link"], "id", [], "any", false, false, false, 66), "html", null, true);
             yield "\">
                             ";
-            // line 41
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["link"], "name", [], "any", false, false, false, 41), "html", null, true);
+            // line 67
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["link"], "name", [], "any", false, false, false, 67), "html", null, true);
             yield "
                         </a>
                     </li>
@@ -119,19 +176,19 @@ class __TwigTemplate_ffea5017b5ffc8abffad088433994377 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['link'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 45
+        // line 71
         yield "                    <li>
                         <a href=\"";
-        // line 46
+        // line 72
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
         yield "search.php\">
                             <object class=\"pointer-events-none\" data=\"";
-        // line 47
+        // line 73
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
         yield "/img/material-search.svg\"
                                     type=\"image/svg+xml\">
                                 <img alt=\"Search\" src=\"";
-        // line 49
+        // line 75
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
         yield "img/material-search.png\">
                             </object>
@@ -143,19 +200,19 @@ class __TwigTemplate_ffea5017b5ffc8abffad088433994377 extends Template
     </div>
 </header>
 ";
-        // line 58
+        // line 84
         yield from $this->unwrap()->yieldBlock('content', $context, $blocks);
-        // line 60
+        // line 86
         yield "<footer class=\"mx-auto bg-slate-50 p-4 flex justify-around\">
     <div>
         &copy; edvgraz ";
-        // line 62
+        // line 88
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y"), "html", null, true);
         yield "
     </div>
     <div>
         <a href=\"";
-        // line 65
+        // line 91
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
         yield "contact.php\">Contact</a>
     </div>
@@ -184,7 +241,7 @@ class __TwigTemplate_ffea5017b5ffc8abffad088433994377 extends Template
         return; yield '';
     }
 
-    // line 58
+    // line 84
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -212,7 +269,7 @@ class __TwigTemplate_ffea5017b5ffc8abffad088433994377 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  188 => 58,  180 => 7,  172 => 6,  159 => 65,  153 => 62,  149 => 60,  147 => 58,  135 => 49,  130 => 47,  126 => 46,  123 => 45,  113 => 41,  107 => 40,  104 => 39,  100 => 38,  96 => 36,  92 => 35,  70 => 16,  66 => 15,  57 => 9,  52 => 7,  48 => 6,  41 => 1,);
+        return array (  245 => 84,  237 => 7,  229 => 6,  216 => 91,  210 => 88,  206 => 86,  204 => 84,  192 => 75,  187 => 73,  183 => 72,  180 => 71,  170 => 67,  164 => 66,  161 => 65,  157 => 64,  153 => 62,  149 => 61,  127 => 42,  123 => 41,  117 => 37,  111 => 34,  108 => 33,  102 => 30,  99 => 29,  97 => 28,  88 => 26,  84 => 24,  77 => 20,  71 => 17,  67 => 15,  65 => 14,  57 => 9,  52 => 7,  48 => 6,  41 => 1,);
     }
 
     public function getSourceContext()
@@ -229,6 +286,32 @@ class __TwigTemplate_ffea5017b5ffc8abffad088433994377 extends Template
 </head>
 <body>
 <header class=\"bg-white border-gray-200 dark:bg-gray-900 border-b-4\">
+    <nav class=\"log-in register bg-gray-100\">
+        {% if session.id == 0 %}
+        <ul class=\"flex justify-end p-1\">
+            <li class=\"p-1\">
+                <a class=\"text-pink-600 hover:text-blue-600\" href=\"{{doc_root}}login.php\">Login</a>
+            </li>
+            <li class=\"p-1\">
+                <a class=\"text-pink-600 hover:text-blue-600\" href=\"{{doc_root}}register.php\">Register</a>
+            </li>
+        </ul>
+        {% else %}
+        <ul class=\"flex justify-end p-1\">
+            <li class=\"p-1\">
+                <a class=\"text-pink-600 hover:text-blue-600\" href=\"{{doc_root}}user.php?id={{session.id}}\">{{session.forename}}</a>
+            </li>
+            {% if session.role == 'admin' %}
+            <li class=\"p-1\">
+                <a class=\"text-pink-600 hover:text-blue-600\" href=\"{{doc_root}}admin/index.php\">Admin</a>
+            </li>
+            {% endif %}
+            <li class=\"p-1\">
+                <a class=\"text-pink-600 hover:text-blue-600\" href=\"{{doc_root}}logout.php\">Logout</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
     <div class=\"max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4\">
         <div class=\"logo\">
             <a class=\"flex items-center space-x-3 rtl:space-x-reverse\" href=\"{{doc_root}}index.php\">

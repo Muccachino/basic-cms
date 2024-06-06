@@ -4,6 +4,9 @@ use EdvGraz\Validation\Validate;
 
 require "../../src/bootstrap.php";
 
+is_admin($session->role);
+
+
 $data["id"] = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ?? null;
 
 $data["errors"] = [
