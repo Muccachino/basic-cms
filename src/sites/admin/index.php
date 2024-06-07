@@ -1,6 +1,5 @@
 <?php
 
-require "../../src/bootstrap.php";
 
 is_admin($session->role);
 $data["categories_count"] = $cms->getCategory()->count();

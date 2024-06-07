@@ -1,5 +1,4 @@
 <?php
-require "../src/bootstrap.php";
 
 $data["search_term"] = filter_input(INPUT_GET, "search");
 $data["per_page"] = filter_input(INPUT_GET, "per_page", FILTER_VALIDATE_INT) ?? 3;

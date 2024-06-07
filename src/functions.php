@@ -43,6 +43,13 @@ function redirect(string $url, array $params = [], $status_code = 302): void
   exit();
 }
 
+function redirect_seo(string $url, int $id, $status_code = 302): void
+{
+  $query = $id ? "/$id" : "";
+  header("Location: $url$query", $status_code);
+  exit();
+}
+
 function get_file_path(string $filename, string $path, bool $admin = false): string
 {
   $basename = pathinfo($filename, PATHINFO_FILENAME);

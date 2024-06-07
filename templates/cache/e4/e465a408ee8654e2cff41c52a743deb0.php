@@ -66,7 +66,7 @@ class __TwigTemplate_e93c0158c6157f0b2bbc9f190e4ffb44 extends Template
     <form action=\"";
         // line 13
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "login.php\" class=\"w-1/3 grid\" method=\"post\">
+        yield "login\" class=\"w-1/3 grid\" method=\"post\">
         ";
         // line 14
         if (($context["errors"] ?? null)) {
@@ -102,7 +102,7 @@ class __TwigTemplate_e93c0158c6157f0b2bbc9f190e4ffb44 extends Template
         <a class=\"text-pink-600 hover:text-blue-600\" href=\"";
         // line 32
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "forgot-password.php\">Reset your password</a>
+        yield "forgot-password\">Reset your password</a>
         <button class=\"text-white w-1/3 bg-blue-500 p-3 rounded-md hover:bg-pink-600 m-5\" type=\"submit\">Login</button>
     </form>
 </main>
@@ -149,7 +149,7 @@ class __TwigTemplate_e93c0158c6157f0b2bbc9f190e4ffb44 extends Template
         <h1 class=\"text-4xl text-blue-500 mb-8\">Login</h1>
     </header>
 
-    <form action=\"{{doc_root}}login.php\" class=\"w-1/3 grid\" method=\"post\">
+    <form action=\"{{doc_root}}login\" class=\"w-1/3 grid\" method=\"post\">
         {% if errors %}
         <p class=\"error text-red-500 bg-red-200 p-5 rounded-md\">Please correct all errors</p>
         {% endif %}
@@ -168,7 +168,7 @@ class __TwigTemplate_e93c0158c6157f0b2bbc9f190e4ffb44 extends Template
             <span class=\"text-red-500\">{{errors.password|raw}}</span>
         </div>
 
-        <a class=\"text-pink-600 hover:text-blue-600\" href=\"{{doc_root}}forgot-password.php\">Reset your password</a>
+        <a class=\"text-pink-600 hover:text-blue-600\" href=\"{{doc_root}}forgot-password\">Reset your password</a>
         <button class=\"text-white w-1/3 bg-blue-500 p-3 rounded-md hover:bg-pink-600 m-5\" type=\"submit\">Login</button>
     </form>
 </main>

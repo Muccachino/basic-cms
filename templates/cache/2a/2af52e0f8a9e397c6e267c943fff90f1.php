@@ -64,44 +64,45 @@ class __TwigTemplate_04cad494cc586516bb15931c0ecff1f4 extends Template
     <nav class=\"bg-gray-100\">
         <ul class=\"flex justify-end p-1\">
             <li class=\"p-1\">
-                <a class=\"text-pink-600 hover:text-blue-600\" href=\"";
-        // line 18
+                <a class=\"text-pink-600 hover:text-blue-600\"
+                   href=\"";
+        // line 19
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "user.php?id=";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["session"] ?? null), "id", [], "any", false, false, false, 18), "html", null, true);
+        yield "user/";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["session"] ?? null), "id", [], "any", false, false, false, 19), "html", null, true);
         yield "\">";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["session"] ?? null), "forename", [], "any", false, false, false, 18), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["session"] ?? null), "forename", [], "any", false, false, false, 19), "html", null, true);
         yield "</a>
             </li>
             ";
-        // line 20
-        if ((CoreExtension::getAttribute($this->env, $this->source, ($context["session"] ?? null), "role", [], "any", false, false, false, 20) == "admin")) {
-            // line 21
+        // line 21
+        if ((CoreExtension::getAttribute($this->env, $this->source, ($context["session"] ?? null), "role", [], "any", false, false, false, 21) == "admin")) {
+            // line 22
             yield "            <li class=\"p-1\">
                 <a class=\"text-pink-600 hover:text-blue-600\" href=\"";
-            // line 22
+            // line 23
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-            yield "admin/index.php\">Admin</a>
+            yield "admin/index\">Admin</a>
             </li>
             ";
         }
-        // line 25
+        // line 26
         yield "            <li class=\"p-1\">
                 <a class=\"text-pink-600 hover:text-blue-600\" href=\"";
-        // line 26
+        // line 27
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "logout.php\">Logout</a>
+        yield "logout\">Logout</a>
             </li>
         </ul>
     </nav>
     <div class=\"max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4\">
         <div class=\"logo\">
             <a class=\"flex items-center space-x-3 rtl:space-x-reverse\" href=\"";
-        // line 32
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "index.php\">
-                <img alt=\"IT-Logo\" src=\"";
         // line 33
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
+        yield "index\">
+                <img alt=\"IT-Logo\" src=\"";
+        // line 34
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
         yield "img/page-logo.png\" width=\"100\">
                 <span class=\"self-center text-2xl font-semibold whitespace-nowrap dark:text-white\">IT-News-Blog</span>
@@ -126,16 +127,16 @@ class __TwigTemplate_04cad494cc586516bb15931c0ecff1f4 extends Template
                     <li>
                         <a class=\"block py-2 px-3 text-white bg-blue-700 rounded hover:text-pink-600 md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500\"
                            href=\"";
-        // line 55
+        // line 56
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "admin/articles.php\">Articles</a>
+        yield "admin/articles\">Articles</a>
                     </li>
                     <li>
                         <a class=\"block py-2 px-3 text-white bg-blue-700 rounded hover:text-pink-600 md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500\"
                            href=\"";
-        // line 59
+        // line 60
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "admin/categories.php\">Categories</a>
+        yield "admin/categories\">Categories</a>
                     </li>
 
                 </ul>
@@ -145,14 +146,14 @@ class __TwigTemplate_04cad494cc586516bb15931c0ecff1f4 extends Template
 </header>
 
 ";
-        // line 68
+        // line 69
         yield from $this->unwrap()->yieldBlock('content', $context, $blocks);
-        // line 70
+        // line 71
         yield "
 <footer>
     <div class=\"mx-auto bg-slate-50  p-4\">
         &copy; edvgraz ";
-        // line 73
+        // line 74
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate("now", "Y"), "html", null, true);
         yield "
     </div>
@@ -181,7 +182,7 @@ class __TwigTemplate_04cad494cc586516bb15931c0ecff1f4 extends Template
         return; yield '';
     }
 
-    // line 68
+    // line 69
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -209,7 +210,7 @@ class __TwigTemplate_04cad494cc586516bb15931c0ecff1f4 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  185 => 68,  177 => 7,  168 => 6,  156 => 73,  151 => 70,  149 => 68,  137 => 59,  130 => 55,  105 => 33,  101 => 32,  92 => 26,  89 => 25,  83 => 22,  80 => 21,  78 => 20,  69 => 18,  57 => 9,  52 => 7,  48 => 6,  41 => 1,);
+        return array (  186 => 69,  178 => 7,  169 => 6,  157 => 74,  152 => 71,  150 => 69,  138 => 60,  131 => 56,  106 => 34,  102 => 33,  93 => 27,  90 => 26,  84 => 23,  81 => 22,  79 => 21,  70 => 19,  57 => 9,  52 => 7,  48 => 6,  41 => 1,);
     }
 
     public function getSourceContext()
@@ -231,21 +232,22 @@ class __TwigTemplate_04cad494cc586516bb15931c0ecff1f4 extends Template
     <nav class=\"bg-gray-100\">
         <ul class=\"flex justify-end p-1\">
             <li class=\"p-1\">
-                <a class=\"text-pink-600 hover:text-blue-600\" href=\"{{doc_root}}user.php?id={{session.id}}\">{{session.forename}}</a>
+                <a class=\"text-pink-600 hover:text-blue-600\"
+                   href=\"{{doc_root}}user/{{session.id}}\">{{session.forename}}</a>
             </li>
             {% if session.role == 'admin' %}
             <li class=\"p-1\">
-                <a class=\"text-pink-600 hover:text-blue-600\" href=\"{{doc_root}}admin/index.php\">Admin</a>
+                <a class=\"text-pink-600 hover:text-blue-600\" href=\"{{doc_root}}admin/index\">Admin</a>
             </li>
             {% endif %}
             <li class=\"p-1\">
-                <a class=\"text-pink-600 hover:text-blue-600\" href=\"{{doc_root}}logout.php\">Logout</a>
+                <a class=\"text-pink-600 hover:text-blue-600\" href=\"{{doc_root}}logout\">Logout</a>
             </li>
         </ul>
     </nav>
     <div class=\"max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4\">
         <div class=\"logo\">
-            <a class=\"flex items-center space-x-3 rtl:space-x-reverse\" href=\"{{doc_root}}index.php\">
+            <a class=\"flex items-center space-x-3 rtl:space-x-reverse\" href=\"{{doc_root}}index\">
                 <img alt=\"IT-Logo\" src=\"{{doc_root}}img/page-logo.png\" width=\"100\">
                 <span class=\"self-center text-2xl font-semibold whitespace-nowrap dark:text-white\">IT-News-Blog</span>
             </a>
@@ -268,11 +270,11 @@ class __TwigTemplate_04cad494cc586516bb15931c0ecff1f4 extends Template
 
                     <li>
                         <a class=\"block py-2 px-3 text-white bg-blue-700 rounded hover:text-pink-600 md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500\"
-                           href=\"{{doc_root}}admin/articles.php\">Articles</a>
+                           href=\"{{doc_root}}admin/articles\">Articles</a>
                     </li>
                     <li>
                         <a class=\"block py-2 px-3 text-white bg-blue-700 rounded hover:text-pink-600 md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500\"
-                           href=\"{{doc_root}}admin/categories.php\">Categories</a>
+                           href=\"{{doc_root}}admin/categories\">Categories</a>
                     </li>
 
                 </ul>

@@ -6,7 +6,7 @@
 {% block content %}
 
 <main class="container w-auto mx-auto md:w-1/2 flex justify-center flex-col items-center p-5">
-    <form action="{{doc_root}}admin/category.php?id={{id ?? ''}}" class="w-full grid" method="POST">
+    <form action="{{doc_root}}admin/category/{{ id ?? ''}}" class="w-full grid" method="POST">
         <h2 class="text-3xl text-blue-500 mb-8">{{id ? "Edit " : "New "}}Category</h2>
         {% if (errors.issue) %}
         <p class="error text-red-500 bg-red-200 p-5 rounded-md">{{errors.issue}}</p>
@@ -30,7 +30,8 @@
         <div class="p-4">
             {% if category.navigation %}
             <input checked
-                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600" id="navigation" name="navigation" type="checkbox">
+                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600"
+                   id="navigation" name="navigation" type="checkbox">
             {% else %}
             <input class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600"
                    id="navigation" name="navigation" type="checkbox">

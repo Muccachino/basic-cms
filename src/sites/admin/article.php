@@ -1,5 +1,4 @@
 <?php
-require "../../src/bootstrap.php";
 
 use EdvGraz\Validation\Validate;
 
@@ -13,7 +12,7 @@ $allowed_types = ["image/jpeg", "image/png"];
 $allowed_extensions = ["jpeg", "jpg", "png"];
 $max_size = 1920 * 1080 * 2;
 
-$data["id"] = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT) ?? "";
+$data["id"] = $id ?? "";
 $tmp_path = $_FILES["image_file"]["tmp_name"] ?? "";
 $save_to = "";
 
@@ -49,7 +48,7 @@ if (isset($cms)) {
   if ($data["id"]) {
     $data["article"] = $cms->getArticle()->fetch($data["id"], false);
     if (!$data["article"]) {
-      redirect("articles.php", ["error" => "article not found"]);
+      redirect("articles", ["error" => "article not found"]);
     }
   }
 }
@@ -144,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cms->getArticle()->push($bindings);
       }
 
-      redirect("articles.php", ["success" => "Article successfully saved"]);
+      redirect("articles", ["success" => "Article successfully saved"]);
     } catch (PDOException $e) {
 
       $data["errors"]["issue"] = $e->getMessage();

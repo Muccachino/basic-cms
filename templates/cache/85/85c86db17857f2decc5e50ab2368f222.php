@@ -78,7 +78,7 @@ class __TwigTemplate_bf60236e9f035115344fde66cd98cede extends Template
         <form action=\"";
         // line 11
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "admin/article-delete.php?id=";
+        yield "admin/article-delete/";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["id"] ?? null), "html", null, true);
         yield "\" method=\"post\">
             <input id=\"id\" name=\"id\" type=\"hidden\" value=\"";
@@ -90,8 +90,8 @@ class __TwigTemplate_bf60236e9f035115344fde66cd98cede extends Template
         <form action=\"";
         // line 15
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "admin/articles.php\">
-            <button class=\"text-white bg-blue-500 p-3 m-2 rounded-md \" type=\"submit\">No</button>
+        yield "admin/articles\">
+            <button class=\"text-white bg-blue-500 p-3 m-2 rounded-md\" type=\"submit\">No</button>
         </form>
     </div>
 
@@ -137,12 +137,12 @@ class __TwigTemplate_bf60236e9f035115344fde66cd98cede extends Template
 <main class=\"container w-auto mx-auto md:w-1/2 flex justify-center flex-col items-center p-5\">
     <h1 class=\"text-4xl text-blue-500 mb-8\">Are you sure you want to delete the article {{article.title}}?</h1>
     <div class=\"flex justify-center items-center\">
-        <form action=\"{{doc_root}}admin/article-delete.php?id={{id}}\" method=\"post\">
+        <form action=\"{{doc_root}}admin/article-delete/{{id}}\" method=\"post\">
             <input id=\"id\" name=\"id\" type=\"hidden\" value=\"{{id}}\">
             <button class=\" text-white bg-pink-600 p-3 m-2 rounded-md\" type=\"submit\">Yes</button>
         </form>
-        <form action=\"{{doc_root}}admin/articles.php\">
-            <button class=\"text-white bg-blue-500 p-3 m-2 rounded-md \" type=\"submit\">No</button>
+        <form action=\"{{doc_root}}admin/articles\">
+            <button class=\"text-white bg-blue-500 p-3 m-2 rounded-md\" type=\"submit\">No</button>
         </form>
     </div>
 

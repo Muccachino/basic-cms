@@ -2,12 +2,10 @@
 
 use EdvGraz\Validation\Validate;
 
-require "../../src/bootstrap.php";
-
 is_admin($session->role);
 
 
-$data["id"] = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ?? null;
+$data["id"] = $id ?? null;
 
 $data["errors"] = [
   "issue" => "",
@@ -30,7 +28,7 @@ if ($data["id"]) {
     // und über eine Fehlermeldung informiert.
 
     if (!$data["category"]) {
-      redirect("categories.php", ["error" => "category not found"]);
+      redirect("categories", ["error" => "category not found"]);
     }
   }
 
@@ -70,10 +68,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if ($data["id"]) {
         $bindings["id"] = $data["id"];
         $cms->getCategory()->update($bindings);
-        redirect("categories.php", ["success" => "category successfully saved"]);
+        redirect("categories", ["success" => "category successfully saved"]);
       } else {
         $cms->getCategory()->push($bindings);
-        redirect("categories.php", ["success" => "category successfully saved"]);
+        redirect("categories", ["success" => "category successfully saved"]);
 
       }
     } catch (PDOException $e) {

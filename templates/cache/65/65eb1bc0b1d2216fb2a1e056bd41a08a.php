@@ -87,7 +87,7 @@ class __TwigTemplate_abdec8191adcb85d8fa9e7ef9ee23aa9 extends Template
         // line 14
         yield "    <form action=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "admin/article.php?id=";
+        yield "admin/article/";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["id"] ?? null), "html", null, true);
         yield "\" class=\"grid gap-6 mb-6 md:grid-cols-2 md:w-full\"
           enctype=\"multipart/form-data\"
@@ -248,13 +248,13 @@ class __TwigTemplate_abdec8191adcb85d8fa9e7ef9ee23aa9 extends Template
             <a class=\"text-blue-500\" href=\"";
             // line 76
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-            yield "admin/alt-text-edit.php?id=";
+            yield "admin/alt-text-edit/";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["article"] ?? null), "id", [], "any", false, false, false, 76), "html", null, true);
             yield "\">Edit Alt Text</a>
             <a class=\"text-red-500\" href=\"";
             // line 77
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-            yield "admin/img-delete.php?id=";
+            yield "admin/img-delete/";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["article"] ?? null), "id", [], "any", false, false, false, 77), "html", null, true);
             yield "\">Delete Image</a>
             ";
@@ -347,7 +347,7 @@ class __TwigTemplate_abdec8191adcb85d8fa9e7ef9ee23aa9 extends Template
     {% if (errors.issue) %}
     <p class=\"error text-red-500 bg-red-200 p-5 rounded-md\">{{errors.issue}}</p>
     {% endif %}
-    <form action=\"{{doc_root}}admin/article.php?id={{id}}\" class=\"grid gap-6 mb-6 md:grid-cols-2 md:w-full\"
+    <form action=\"{{doc_root}}admin/article/{{id}}\" class=\"grid gap-6 mb-6 md:grid-cols-2 md:w-full\"
           enctype=\"multipart/form-data\"
           method=\"POST\">
         <div>
@@ -409,8 +409,8 @@ class __TwigTemplate_abdec8191adcb85d8fa9e7ef9ee23aa9 extends Template
             <img alt=\"{{article.image_alt}}\" class=\"w-full h-auto\"
                  src=\"{{doc_root}}uploads/{{article.image_file}}\"/>
             <span>Alt Text: {{article.image_alt}}</span>
-            <a class=\"text-blue-500\" href=\"{{doc_root}}admin/alt-text-edit.php?id={{article.id}}\">Edit Alt Text</a>
-            <a class=\"text-red-500\" href=\"{{doc_root}}admin/img-delete.php?id={{article.id}}\">Delete Image</a>
+            <a class=\"text-blue-500\" href=\"{{doc_root}}admin/alt-text-edit/{{article.id}}\">Edit Alt Text</a>
+            <a class=\"text-red-500\" href=\"{{doc_root}}admin/img-delete/{{article.id}}\">Delete Image</a>
             {% endif %}
             <label class=\"block mb-2 text-sm font-medium text-gray-900 pt-2\" for=\"image_alt\">Image Alt</label>
             <input class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5\"

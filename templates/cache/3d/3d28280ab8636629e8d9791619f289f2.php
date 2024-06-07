@@ -95,7 +95,7 @@ class __TwigTemplate_213e4c2d9b9b0cc89c3ecd8c5e81509b extends Template
         <button class=\"text-white bg-blue-500 p-3 rounded-md hover:bg-pink-600\"><a href=\"";
         // line 18
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "admin/article.php\">Add
+        yield "admin/article\">Add
             a new
             Article</a></button>
     </header>
@@ -164,14 +164,14 @@ class __TwigTemplate_213e4c2d9b9b0cc89c3ecd8c5e81509b extends Template
                     href=\"";
             // line 51
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-            yield "admin/article.php?id=";
+            yield "admin/article/";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["article"], "id", [], "any", false, false, false, 51), "html", null, true);
             yield "\">Edit</a></td>
             <td class=\"px-6 py-4 font-medium text-blue-600 whitespace-nowrap\"><a
                     href=\"";
             // line 53
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-            yield "admin/article-delete.php?id=";
+            yield "admin/article-delete/";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["article"], "id", [], "any", false, false, false, 53), "html", null, true);
             yield "\">Delete</a></td>
         </tr>
@@ -232,7 +232,7 @@ class __TwigTemplate_213e4c2d9b9b0cc89c3ecd8c5e81509b extends Template
         {% endif %}
 
         <h1 class=\"text-4xl text-blue-500 mb-8\">Articles</h1>
-        <button class=\"text-white bg-blue-500 p-3 rounded-md hover:bg-pink-600\"><a href=\"{{doc_root}}admin/article.php\">Add
+        <button class=\"text-white bg-blue-500 p-3 rounded-md hover:bg-pink-600\"><a href=\"{{doc_root}}admin/article\">Add
             a new
             Article</a></button>
     </header>
@@ -265,9 +265,9 @@ class __TwigTemplate_213e4c2d9b9b0cc89c3ecd8c5e81509b extends Template
             <td class=\"px-6 py-4 font-medium text-gray-900 whitespace-nowrap\">{{article.category}}</td>
             <td class=\"px-6 py-4 font-medium text-gray-900 whitespace-nowrap\">{{article.published ? \"Yes\" : \"No\"}}</td>
             <td class=\"px-6 py-4 font-medium text-pink-600 whitespace-nowrap\"><a
-                    href=\"{{doc_root}}admin/article.php?id={{article.id}}\">Edit</a></td>
+                    href=\"{{doc_root}}admin/article/{{article.id}}\">Edit</a></td>
             <td class=\"px-6 py-4 font-medium text-blue-600 whitespace-nowrap\"><a
-                    href=\"{{doc_root}}admin/article-delete.php?id={{article.id}}\">Delete</a></td>
+                    href=\"{{doc_root}}admin/article-delete/{{article.id}}\">Delete</a></td>
         </tr>
         {% endfor %}
         </tbody>

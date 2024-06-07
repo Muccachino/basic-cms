@@ -1,10 +1,9 @@
 <?php
-require "../../src/bootstrap.php";
 
 is_admin($session->role);
 
 
-$data["id"] = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ?? null;
+$data["id"] = $id ?? null;
 
 if (isset($cms)) {
   $data["article"] = $cms->getArticle()->fetch($data["id"], false);
@@ -37,10 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Löschen des Artikels aus der Datenbank
     $cms->getArticle()->delete($art_id);
 
-    redirect("articles.php", ["success" => "Article successfully deleted"]);
+    redirect("articles", ["success" => "Article successfully deleted"]);
 
   } catch (PDOException $e) {
-    redirect("articles.php", ["error" => "Article could not be removed"]);
+    redirect("articles", ["error" => "Article could not be removed"]);
   }
 
 }

@@ -15,7 +15,7 @@
         {% endif %}
 
         <h1 class="text-4xl text-blue-500 mb-8">Articles</h1>
-        <button class="text-white bg-blue-500 p-3 rounded-md hover:bg-pink-600"><a href="{{doc_root}}admin/article.php">Add
+        <button class="text-white bg-blue-500 p-3 rounded-md hover:bg-pink-600"><a href="{{doc_root}}admin/article">Add
             a new
             Article</a></button>
     </header>
@@ -48,9 +48,9 @@
             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{article.category}}</td>
             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{article.published ? "Yes" : "No"}}</td>
             <td class="px-6 py-4 font-medium text-pink-600 whitespace-nowrap"><a
-                    href="{{doc_root}}admin/article.php?id={{article.id}}">Edit</a></td>
+                    href="{{doc_root}}admin/article/{{article.id}}">Edit</a></td>
             <td class="px-6 py-4 font-medium text-blue-600 whitespace-nowrap"><a
-                    href="{{doc_root}}admin/article-delete.php?id={{article.id}}">Delete</a></td>
+                    href="{{doc_root}}admin/article-delete/{{article.id}}">Delete</a></td>
         </tr>
         {% endfor %}
         </tbody>

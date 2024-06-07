@@ -76,7 +76,7 @@ class __TwigTemplate_f457e3503bc1b4f115b97bb3b241a64d extends Template
         <form action=\"";
         // line 11
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "search.php\" class=\"mt-4\" method=\"GET\">
+        yield "search/\" class=\"mt-4\" method=\"GET\">
             <label class=\"sr-only\" for=\"search\">Search</label>
             <input class=\"border p-2\" id=\"search\" name=\"search\" type=\"text\" value=\"";
         // line 13
@@ -107,7 +107,7 @@ class __TwigTemplate_f457e3503bc1b4f115b97bb3b241a64d extends Template
                        href=\"";
                 // line 31
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-                yield "search.php?search=";
+                yield "search/?search=";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["search_term"] ?? null), "html", null, true);
                 yield "&per_page=";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["per_page"] ?? null), "html", null, true);
@@ -133,7 +133,7 @@ class __TwigTemplate_f457e3503bc1b4f115b97bb3b241a64d extends Template
                        href=\"";
                 // line 38
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-                yield "search.php?search=";
+                yield "search/?search=";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["search_term"] ?? null), "html", null, true);
                 yield "&per_page=";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["per_page"] ?? null), "html", null, true);
@@ -157,7 +157,7 @@ class __TwigTemplate_f457e3503bc1b4f115b97bb3b241a64d extends Template
                        href=\"";
                 // line 44
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-                yield "search.php?search=";
+                yield "search/?search=";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["search_term"] ?? null), "html", null, true);
                 yield "&per_page=";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["per_page"] ?? null), "html", null, true);
@@ -231,7 +231,7 @@ class __TwigTemplate_f457e3503bc1b4f115b97bb3b241a64d extends Template
 <main class=\"container mx-auto\">
     <section class=\"flex flex-col justify-center items-center p-10\">
         <h1 class=\"text-3xl font-bold mt-4\">Search Results</h1>
-        <form action=\"{{doc_root}}search.php\" class=\"mt-4\" method=\"GET\">
+        <form action=\"{{doc_root}}search/\" class=\"mt-4\" method=\"GET\">
             <label class=\"sr-only\" for=\"search\">Search</label>
             <input class=\"border p-2\" id=\"search\" name=\"search\" type=\"text\" value=\"{{search_term}}\">
             <button class=\"bg-blue-500 text-white p-2\" type=\"submit\">Search</button>
@@ -251,20 +251,20 @@ class __TwigTemplate_f457e3503bc1b4f115b97bb3b241a64d extends Template
                 {% if (current_page > 1) %}
                 <li class=\"m-2\">
                     <a class=\"p-2 bg-blue-500 text-white\"
-                       href=\"{{doc_root}}search.php?search={{search_term}}&per_page={{per_page}}&offset={{offset - per_page}}\">Previous</a>
+                       href=\"{{doc_root}}search/?search={{search_term}}&per_page={{per_page}}&offset={{offset - per_page}}\">Previous</a>
                 </li>
                 {% endif %}
 
                 {% for i in 1..total_pages %}
                 <li>
                     <a class=\"p-2 text-white {{ i == current_page ? 'bg-pink-600' : 'bg-blue-500' }}\"
-                       href=\"{{doc_root}}search.php?search={{search_term}}&per_page={{per_page}}&offset={{(i - 1) * per_page}}\">{{i}}</a>
+                       href=\"{{doc_root}}search/?search={{search_term}}&per_page={{per_page}}&offset={{(i - 1) * per_page}}\">{{i}}</a>
                 </li>
                 {% endfor %}
                 {% if (current_page < total_pages) %}
                 <li class=\"m-2\">
                     <a class=\"p-2 bg-blue-500 text-white\"
-                       href=\"{{doc_root}}search.php?search={{search_term}}&per_page={{per_page}}&offset={{offset + per_page}}\">Next</a>
+                       href=\"{{doc_root}}search/?search={{search_term}}&per_page={{per_page}}&offset={{offset + per_page}}\">Next</a>
                 </li>
                 {% endif %}
             </ul>

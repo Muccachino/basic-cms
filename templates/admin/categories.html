@@ -16,7 +16,7 @@
 
         <h1 class="text-4xl text-blue-500 mb-8">Categories</h1>
         <button class="text-white bg-blue-500 p-3 rounded-md hover:bg-pink-600"><a
-                href="{{doc_root}}admin/category.php">Add a new
+                href="{{doc_root}}admin/category">Add a new
             Category</a></button>
     </header>
 
@@ -33,9 +33,9 @@
         <tr class="bg-white border-b dark:bg-gray-800">
             <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{category.name}}</td>
             <td class="px-6 py-4 font-medium text-pink-600 whitespace-nowrap"><a
-                    href="{{doc_root}}admin/category.php?id={{category.id}}">Edit</a></td>
+                    href="{{doc_root}}admin/category/{{category.id}}">Edit</a></td>
             <td class="px-6 py-4 font-medium text-blue-600 whitespace-nowrap"><a
-                    href="{{doc_root}}admin/category-delete.php?id={{category.id}}">Delete</a></td>
+                    href="{{doc_root}}admin/category-delete/{{category.id}}">Delete</a></td>
         </tr>
         {% endfor %}
         </tbody>

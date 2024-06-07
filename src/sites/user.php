@@ -1,7 +1,7 @@
 <?php
-require "../src/bootstrap.php";
 
-$user_id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+$user_id = $id;
+
 if (!$user_id) {
   include APP_ROOT . "/public/page_not_found.php";
 }

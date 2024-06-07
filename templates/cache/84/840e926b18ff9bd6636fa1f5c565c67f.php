@@ -96,7 +96,7 @@ class __TwigTemplate_d65f09da400279c851511cc8e41970f4 extends Template
                 href=\"";
         // line 19
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "admin/category.php\">Add a new
+        yield "admin/category\">Add a new
             Category</a></button>
     </header>
 
@@ -124,14 +124,14 @@ class __TwigTemplate_d65f09da400279c851511cc8e41970f4 extends Template
                     href=\"";
             // line 36
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-            yield "admin/category.php?id=";
+            yield "admin/category/";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "id", [], "any", false, false, false, 36), "html", null, true);
             yield "\">Edit</a></td>
             <td class=\"px-6 py-4 font-medium text-blue-600 whitespace-nowrap\"><a
                     href=\"";
             // line 38
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-            yield "admin/category-delete.php?id=";
+            yield "admin/category-delete/";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "id", [], "any", false, false, false, 38), "html", null, true);
             yield "\">Delete</a></td>
         </tr>
@@ -193,7 +193,7 @@ class __TwigTemplate_d65f09da400279c851511cc8e41970f4 extends Template
 
         <h1 class=\"text-4xl text-blue-500 mb-8\">Categories</h1>
         <button class=\"text-white bg-blue-500 p-3 rounded-md hover:bg-pink-600\"><a
-                href=\"{{doc_root}}admin/category.php\">Add a new
+                href=\"{{doc_root}}admin/category\">Add a new
             Category</a></button>
     </header>
 
@@ -210,9 +210,9 @@ class __TwigTemplate_d65f09da400279c851511cc8e41970f4 extends Template
         <tr class=\"bg-white border-b dark:bg-gray-800\">
             <td class=\"px-6 py-4 font-medium text-gray-900 whitespace-nowrap\">{{category.name}}</td>
             <td class=\"px-6 py-4 font-medium text-pink-600 whitespace-nowrap\"><a
-                    href=\"{{doc_root}}admin/category.php?id={{category.id}}\">Edit</a></td>
+                    href=\"{{doc_root}}admin/category/{{category.id}}\">Edit</a></td>
             <td class=\"px-6 py-4 font-medium text-blue-600 whitespace-nowrap\"><a
-                    href=\"{{doc_root}}admin/category-delete.php?id={{category.id}}\">Delete</a></td>
+                    href=\"{{doc_root}}admin/category-delete/{{category.id}}\">Delete</a></td>
         </tr>
         {% endfor %}
         </tbody>

@@ -11,7 +11,7 @@
     {% if (errors.issue) %}
     <p class="error text-red-500 bg-red-200 p-5 rounded-md">{{errors.issue}}</p>
     {% endif %}
-    <form action="{{doc_root}}admin/article.php?id={{id}}" class="grid gap-6 mb-6 md:grid-cols-2 md:w-full"
+    <form action="{{doc_root}}admin/article/{{id}}" class="grid gap-6 mb-6 md:grid-cols-2 md:w-full"
           enctype="multipart/form-data"
           method="POST">
         <div>
@@ -73,8 +73,8 @@
             <img alt="{{article.image_alt}}" class="w-full h-auto"
                  src="{{doc_root}}uploads/{{article.image_file}}"/>
             <span>Alt Text: {{article.image_alt}}</span>
-            <a class="text-blue-500" href="{{doc_root}}admin/alt-text-edit.php?id={{article.id}}">Edit Alt Text</a>
-            <a class="text-red-500" href="{{doc_root}}admin/img-delete.php?id={{article.id}}">Delete Image</a>
+            <a class="text-blue-500" href="{{doc_root}}admin/alt-text-edit/{{article.id}}">Edit Alt Text</a>
+            <a class="text-red-500" href="{{doc_root}}admin/img-delete/{{article.id}}">Delete Image</a>
             {% endif %}
             <label class="block mb-2 text-sm font-medium text-gray-900 pt-2" for="image_alt">Image Alt</label>
             <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"

@@ -13,7 +13,7 @@ class Article
 
   public function getAll(int $cat_id = null, bool $published = true, int $user_id = null, int $limit = 1000): array
   {
-    $sql = "SELECT a.id, a.title, a.summary, a.category_id, a.created, a.user_id, a.published, 
+    $sql = "SELECT a.id, a.title, a.summary, a.category_id, a.created, a.user_id, a.published, a.seo_title,
     c.name AS category,
     CONCAT(u.forename, ' ', u.surname) AS author,
     i.filename AS image_file, i.alttext AS image_alt
@@ -43,7 +43,7 @@ class Article
 
   public function getSearchedArticles(string $searchTerm, int $per_page, int $offset): array
   {
-    $sql = "SELECT a.id, a.title, a.summary, a.category_id, a.user_id, c.name AS category,
+    $sql = "SELECT a.id, a.title, a.summary, a.category_id, a.user_id, a.seo_title, c.name AS category,
             CONCAT(u.forename, ' ', u.surname) AS author,
             i.filename AS image_file,
             i.alttext AS image_alt
@@ -82,8 +82,8 @@ class Article
 
   public function fetch(int $id, bool $published = true): array
   {
-    $sql = "SELECT a.id, a.title, a.summary, a.content, a.created, a.category_id, a.images_id, a.user_id, a.published, 
-    c.name AS category,
+    $sql = "SELECT a.id, a.title, a.summary, a.content, a.created, a.category_id, a.images_id, a.user_id, a.published, a.seo_title,
+    c.name AS category, c.seo_title AS cat_seo_title,
     CONCAT(u.forename, ' ', u.surname) AS author,
     i.id AS image_id, i.filename AS image_file, i.alttext AS image_alt
     FROM articles AS a 

@@ -3,18 +3,16 @@
 use EdvGraz\Mail\Email;
 use EdvGraz\Validation\Validate;
 
-require "../src/bootstrap.php";
-
 $errors = [];
 
 $token = filter_input(INPUT_GET, "token");
 if (!$token) {
-  redirect("index.php");
+  redirect("index");
 }
 
 $user_id = $cms->getToken()->get_user_id($token);
 if (!$user_id) {
-  redirect("index.php");
+  redirect("index");
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

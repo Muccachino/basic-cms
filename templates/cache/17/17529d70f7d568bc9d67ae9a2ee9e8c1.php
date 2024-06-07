@@ -89,7 +89,7 @@ class __TwigTemplate_e7e89bee50f936062f0ceb1c143d2610 extends Template
             // line 14
             yield "        <img alt=\"No image available\" src=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-            yield "uploads/placeholder.php\">
+            yield "img/placeholder.php\">
         ";
         }
         // line 16
@@ -108,24 +108,29 @@ class __TwigTemplate_e7e89bee50f936062f0ceb1c143d2610 extends Template
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["article"] ?? null), "content", [], "any", false, false, false, 20), "html", null, true);
         yield "</div>
         <p class=\"credit text-xs mt-5 mb-5\">
-            Posted in <a class=\"text-pink-400\" href=\"";
-        // line 22
+            Posted in <a class=\"text-pink-400\"
+                         href=\"";
+        // line 23
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "category.php?id=";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["article"] ?? null), "category_id", [], "any", false, false, false, 22), "html", null, true);
+        yield "category/";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["article"] ?? null), "category_id", [], "any", false, false, false, 23), "html", null, true);
+        yield "/";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["article"] ?? null), "cat_seo_title", [], "any", false, false, false, 23), "html", null, true);
         yield "\">
             ";
-        // line 23
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["article"] ?? null), "category_id", [], "any", false, false, false, 23), "html", null, true);
+        // line 24
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["article"] ?? null), "category", [], "any", false, false, false, 24), "html", null, true);
         yield "
         </a>
-            by <a class=\"text-pink-400\" href=\"user.php?id=";
-        // line 25
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["article"] ?? null), "user_id", [], "any", false, false, false, 25), "html", null, true);
+            by <a class=\"text-pink-400\" href=\"";
+        // line 26
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
+        yield "user/";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["article"] ?? null), "user_id", [], "any", false, false, false, 26), "html", null, true);
         yield "\">
             ";
-        // line 26
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["article"] ?? null), "author", [], "any", false, false, false, 26), "html", null, true);
+        // line 27
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["article"] ?? null), "author", [], "any", false, false, false, 27), "html", null, true);
         yield "
         </a>
         </p>
@@ -157,7 +162,7 @@ class __TwigTemplate_e7e89bee50f936062f0ceb1c143d2610 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  128 => 26,  124 => 25,  119 => 23,  113 => 22,  108 => 20,  104 => 19,  100 => 18,  96 => 16,  90 => 14,  83 => 12,  78 => 11,  76 => 10,  71 => 7,  67 => 6,  57 => 4,  49 => 3,  38 => 1,);
+        return array (  133 => 27,  127 => 26,  122 => 24,  114 => 23,  108 => 20,  104 => 19,  100 => 18,  96 => 16,  90 => 14,  83 => 12,  78 => 11,  76 => 10,  71 => 7,  67 => 6,  57 => 4,  49 => 3,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -175,7 +180,7 @@ class __TwigTemplate_e7e89bee50f936062f0ceb1c143d2610 extends Template
         <img alt=\"{{article.image_alt}}\" class=\"mt-5\"
              src=\"{{doc_root}}uploads/{{article.image_file}}\">
         {% else %}
-        <img alt=\"No image available\" src=\"{{doc_root}}uploads/placeholder.php\">
+        <img alt=\"No image available\" src=\"{{doc_root}}img/placeholder.php\">
         {% endif %}
     </section>
     <section>
@@ -183,10 +188,11 @@ class __TwigTemplate_e7e89bee50f936062f0ceb1c143d2610 extends Template
         <div class=\"text-gray-500 mb-3\">{{article.created|date('d M. Y')}}</div>
         <div class=\"text-gray-500\">{{article.content}}</div>
         <p class=\"credit text-xs mt-5 mb-5\">
-            Posted in <a class=\"text-pink-400\" href=\"{{doc_root}}category.php?id={{article.category_id}}\">
-            {{article.category_id}}
+            Posted in <a class=\"text-pink-400\"
+                         href=\"{{doc_root}}category/{{article.category_id}}/{{article.cat_seo_title}}\">
+            {{article.category}}
         </a>
-            by <a class=\"text-pink-400\" href=\"user.php?id={{article.user_id}}\">
+            by <a class=\"text-pink-400\" href=\"{{doc_root}}user/{{article.user_id}}\">
             {{article.author}}
         </a>
         </p>

@@ -13,7 +13,7 @@ class Category
 
   public function fetch(int $id): array
   {
-    $sql = "SELECT id, name, description, navigation FROM category WHERE id = :id";
+    $sql = "SELECT id, name, description, navigation, seo_title FROM category WHERE id = :id";
 
     return $this->db->sql_execute($sql, ["id" => $id])->fetch();
   }
@@ -27,7 +27,7 @@ class Category
 
   public function fetchNavigation(): array
   {
-    $sql = "SELECT id, name FROM category WHERE navigation = 1";
+    $sql = "SELECT id, name, seo_title FROM category WHERE navigation = 1";
 
     return $this->db->sql_execute($sql)->fetchAll();
   }

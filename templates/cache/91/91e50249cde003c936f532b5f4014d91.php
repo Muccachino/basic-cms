@@ -70,7 +70,7 @@ class __TwigTemplate_1fc3035607ec6f132e7304ab6fa29364 extends Template
                 <a href=\"";
         // line 20
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "admin/categories.php\">View</a>
+        yield "admin/categories\">View</a>
             </td>
         </tr>
         <tr class=\"bg-white border-b dark:bg-gray-800\">
@@ -83,7 +83,7 @@ class __TwigTemplate_1fc3035607ec6f132e7304ab6fa29364 extends Template
                 <a href=\"";
         // line 27
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "admin/articles.php\">View</a>
+        yield "admin/articles\">View</a>
             </td>
         </tr>
         <tr class=\"bg-white border-b dark:bg-gray-800\">
@@ -147,14 +147,14 @@ class __TwigTemplate_1fc3035607ec6f132e7304ab6fa29364 extends Template
             <td class=\"px-6 py-4 font-medium text-gray-900 whitespace-nowrap\">Categories</td>
             <td class=\"px-6 py-4 font-medium text-blue-600 whitespace-nowrap\">{{categories_count}}</td>
             <td class=\"px-6 py-4 font-medium text-pink-600 whitespace-nowrap\">
-                <a href=\"{{doc_root}}admin/categories.php\">View</a>
+                <a href=\"{{doc_root}}admin/categories\">View</a>
             </td>
         </tr>
         <tr class=\"bg-white border-b dark:bg-gray-800\">
             <td class=\"px-6 py-4 font-medium text-gray-900 whitespace-nowrap\">Articles</td>
             <td class=\"px-6 py-4 font-medium text-blue-600 whitespace-nowrap\">{{articles_count}}</td>
             <td class=\"px-6 py-4 font-medium text-pink-600 whitespace-nowrap\">
-                <a href=\"{{doc_root}}admin/articles.php\">View</a>
+                <a href=\"{{doc_root}}admin/articles\">View</a>
             </td>
         </tr>
         <tr class=\"bg-white border-b dark:bg-gray-800\">

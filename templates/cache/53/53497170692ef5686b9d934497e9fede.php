@@ -66,7 +66,7 @@ class __TwigTemplate_8be03624179e576d65a7251612288473 extends Template
     <form action=\"";
         // line 12
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "register.php\" class=\"w-2/3 grid\" method=\"post\">
+        yield "register\" class=\"w-2/3 grid\" method=\"post\">
         ";
         // line 13
         if (($context["errors"] ?? null)) {
@@ -179,7 +179,7 @@ class __TwigTemplate_8be03624179e576d65a7251612288473 extends Template
         <h1 class=\"text-4xl text-blue-500 mb-8\">Register</h1>
     </header>
 
-    <form action=\"{{doc_root}}register.php\" class=\"w-2/3 grid\" method=\"post\">
+    <form action=\"{{doc_root}}register\" class=\"w-2/3 grid\" method=\"post\">
         {% if errors %}
         <p class=\"error text-red-500 bg-red-200 p-5 rounded-md\">Please correct all errors</p>
         {% endif %}

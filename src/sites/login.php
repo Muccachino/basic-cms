@@ -2,7 +2,6 @@
 
 use EdvGraz\Validation\Validate;
 
-require "../src/bootstrap.php";
 
 $data["navigation"] = $cms->getCategory()->fetchNavigation();
 $mail = "";
@@ -27,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $errors["login"] = "Your account is disabled";
     } elseif ($user) {
       $cms->getSession()->createSession($user);
-      redirect("user.php", ["id" => $user["id"]]);
+      redirect_seo("user", $user["id"]);
     } else {
       $errors["login"] = "Login failed";
     }

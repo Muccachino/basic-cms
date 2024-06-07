@@ -73,7 +73,7 @@ class __TwigTemplate_016033ff133bc37eda26fc981bdc8a49 extends Template
     <form action=\"";
         // line 9
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "admin/category.php?id=";
+        yield "admin/category/";
         (((array_key_exists("id", $context) &&  !(null === ($context["id"] ?? null)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["id"] ?? null), "html", null, true)) : (yield ""));
         yield "\" class=\"w-full grid\" method=\"POST\">
         <h2 class=\"text-3xl text-blue-500 mb-8\">";
@@ -124,15 +124,16 @@ class __TwigTemplate_016033ff133bc37eda26fc981bdc8a49 extends Template
         if (CoreExtension::getAttribute($this->env, $this->source, ($context["category"] ?? null), "navigation", [], "any", false, false, false, 31)) {
             // line 32
             yield "            <input checked
-                   class=\"w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600\" id=\"navigation\" name=\"navigation\" type=\"checkbox\">
+                   class=\"w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600\"
+                   id=\"navigation\" name=\"navigation\" type=\"checkbox\">
             ";
         } else {
-            // line 35
+            // line 36
             yield "            <input class=\"w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600\"
                    id=\"navigation\" name=\"navigation\" type=\"checkbox\">
             ";
         }
-        // line 38
+        // line 39
         yield "            <label class=\"ms-2 text-sm font-medium text-gray-900\" for=\"navigation\">Navigation</label>
         </div>
 
@@ -165,7 +166,7 @@ class __TwigTemplate_016033ff133bc37eda26fc981bdc8a49 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  136 => 38,  131 => 35,  126 => 32,  124 => 31,  117 => 27,  113 => 26,  103 => 19,  99 => 18,  93 => 14,  87 => 12,  85 => 11,  81 => 10,  75 => 9,  71 => 7,  67 => 6,  57 => 4,  49 => 3,  38 => 1,);
+        return array (  137 => 39,  132 => 36,  126 => 32,  124 => 31,  117 => 27,  113 => 26,  103 => 19,  99 => 18,  93 => 14,  87 => 12,  85 => 11,  81 => 10,  75 => 9,  71 => 7,  67 => 6,  57 => 4,  49 => 3,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -178,7 +179,7 @@ class __TwigTemplate_016033ff133bc37eda26fc981bdc8a49 extends Template
 {% block content %}
 
 <main class=\"container w-auto mx-auto md:w-1/2 flex justify-center flex-col items-center p-5\">
-    <form action=\"{{doc_root}}admin/category.php?id={{id ?? ''}}\" class=\"w-full grid\" method=\"POST\">
+    <form action=\"{{doc_root}}admin/category/{{ id ?? ''}}\" class=\"w-full grid\" method=\"POST\">
         <h2 class=\"text-3xl text-blue-500 mb-8\">{{id ? \"Edit \" : \"New \"}}Category</h2>
         {% if (errors.issue) %}
         <p class=\"error text-red-500 bg-red-200 p-5 rounded-md\">{{errors.issue}}</p>
@@ -202,7 +203,8 @@ class __TwigTemplate_016033ff133bc37eda26fc981bdc8a49 extends Template
         <div class=\"p-4\">
             {% if category.navigation %}
             <input checked
-                   class=\"w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600\" id=\"navigation\" name=\"navigation\" type=\"checkbox\">
+                   class=\"w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600\"
+                   id=\"navigation\" name=\"navigation\" type=\"checkbox\">
             {% else %}
             <input class=\"w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600\"
                    id=\"navigation\" name=\"navigation\" type=\"checkbox\">
