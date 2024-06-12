@@ -42,7 +42,7 @@ class Category
   public function push(array $data): bool
   {
     try {
-      $sql = "INSERT INTO category (name, description, navigation) VALUES (:name, :description, :navigation)";
+      $sql = "INSERT INTO category (name, description, navigation, seo_title) VALUES (:name, :description, :navigation, :seo_title)";
       $this->db->sql_execute($sql, $data);
 
       return true;
@@ -54,7 +54,7 @@ class Category
   public function update(array $data): bool
   {
     try {
-      $sql = "UPDATE category SET name = :name, description = :description, navigation = :navigation WHERE id = :id";
+      $sql = "UPDATE category SET name = :name, description = :description, navigation = :navigation, seo_title = :seo_title WHERE id = :id";
       $this->db->sql_execute($sql, $data);
 
       return true;

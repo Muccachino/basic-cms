@@ -93,6 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $data["article"]["user_id"] = filter_input(INPUT_POST, "user_id", FILTER_VALIDATE_INT);
   $data["article"]["category_id"] = filter_input(INPUT_POST, "category_id", FILTER_VALIDATE_INT);
   $data["article"]["published"] = filter_input(INPUT_POST, "published", FILTER_VALIDATE_BOOLEAN) ? 1 : 0;
+  $data["article"]["seo_title"] = create_seo_name($data["article"]["title"]);
 
   // HTML-Code wird bereinigt
   $purifier = new HTMLPurifier();
@@ -143,7 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cms->getArticle()->push($bindings);
       }
 
-      redirect("articles", ["success" => "Article successfully saved"]);
+      redirect_admin("articles");
     } catch (PDOException $e) {
 
       $data["errors"]["issue"] = $e->getMessage();

@@ -135,6 +135,12 @@ class __TwigTemplate_e7e89bee50f936062f0ceb1c143d2610 extends Template
         </a>
         </p>
     </section>
+    <section class=\"w-full\">
+        ";
+        // line 32
+        yield from         $this->loadTemplate("comment-list.html", "article.html", 32)->unwrap()->yield($context);
+        // line 33
+        yield "    </section>
 </main>
 
 ";
@@ -162,7 +168,7 @@ class __TwigTemplate_e7e89bee50f936062f0ceb1c143d2610 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  133 => 27,  127 => 26,  122 => 24,  114 => 23,  108 => 20,  104 => 19,  100 => 18,  96 => 16,  90 => 14,  83 => 12,  78 => 11,  76 => 10,  71 => 7,  67 => 6,  57 => 4,  49 => 3,  38 => 1,);
+        return array (  143 => 33,  141 => 32,  133 => 27,  127 => 26,  122 => 24,  114 => 23,  108 => 20,  104 => 19,  100 => 18,  96 => 16,  90 => 14,  83 => 12,  78 => 11,  76 => 10,  71 => 7,  67 => 6,  57 => 4,  49 => 3,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -196,6 +202,9 @@ class __TwigTemplate_e7e89bee50f936062f0ceb1c143d2610 extends Template
             {{article.author}}
         </a>
         </p>
+    </section>
+    <section class=\"w-full\">
+        {% include 'comment-list.html' %}
     </section>
 </main>
 

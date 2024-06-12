@@ -36,10 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Löschen des Artikels aus der Datenbank
     $cms->getArticle()->delete($art_id);
 
-    redirect("articles", ["success" => "Article successfully deleted"]);
+    redirect_admin("articles");
 
   } catch (PDOException $e) {
-    redirect("articles", ["error" => "Article could not be removed"]);
+    redirect_admin("articles");
   }
 
 }

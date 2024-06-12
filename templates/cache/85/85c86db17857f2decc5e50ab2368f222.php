@@ -90,7 +90,7 @@ class __TwigTemplate_bf60236e9f035115344fde66cd98cede extends Template
         <form action=\"";
         // line 15
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "admin/articles\">
+        yield "admin/articles/\">
             <button class=\"text-white bg-blue-500 p-3 m-2 rounded-md\" type=\"submit\">No</button>
         </form>
     </div>
@@ -141,7 +141,7 @@ class __TwigTemplate_bf60236e9f035115344fde66cd98cede extends Template
             <input id=\"id\" name=\"id\" type=\"hidden\" value=\"{{id}}\">
             <button class=\" text-white bg-pink-600 p-3 m-2 rounded-md\" type=\"submit\">Yes</button>
         </form>
-        <form action=\"{{doc_root}}admin/articles\">
+        <form action=\"{{doc_root}}admin/articles/\">
             <button class=\"text-white bg-blue-500 p-3 m-2 rounded-md\" type=\"submit\">No</button>
         </form>
     </div>

@@ -43,11 +43,31 @@ function redirect(string $url, array $params = [], $status_code = 302): void
   exit();
 }
 
-function redirect_seo(string $url, int $id, $status_code = 302): void
+function redirect_seo(string $url, int $id = null, $status_code = 302): void
 {
   $query = $id ? "/$id" : "";
-  header("Location: $url$query", $status_code);
+  header("Location: " . DOC_ROOT . "$url$query", $status_code);
   exit();
+}
+
+function redirect_admin(string $page, int $id = null, $status_code = 302): void
+{
+  $query = $id ? "/$id" : "";
+  header("Location: " . DOC_ROOT . "admin/" . "$page$query", $status_code);
+}
+
+function create_seo_name(string $name): string
+{
+  $name = strtolower($name);
+  $name = trim($name);
+
+  // Entfernt alle Sonderzeichen ausser Bindestriche
+  $name = preg_replace('/[^-A-z0-9]/', '', $name);
+
+  // Entfernt alle Leerzeichen und ersetzt sie durch Bindestriche
+  $name = preg_replace("/ /", "-", $name);
+
+  return $name;
 }
 
 function get_file_path(string $filename, string $path, bool $admin = false): string

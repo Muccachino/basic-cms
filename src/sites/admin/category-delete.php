@@ -1,10 +1,9 @@
 <?php
-require "../../src/bootstrap.php";
 
 is_admin($session->role);
 
 
-$data["id"] = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT) ?? null;
+$data["id"] = $id ?? null;
 
 if (isset($cms)) {
   $data["category"] = $cms->getCategory()->fetch($data["id"]);
@@ -15,12 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   try {
     $cms->getCategory()->delete($cat_id);
-    redirect("categories.php", ["success" => "category successfully deleted"]);
+    redirect_admin("categories.php");
   } catch (PDOException $e) {
     $error = $e->errorInfo[1];
     if ($error == "1451") {
       $categoryName = $data["category"]['name'];
-      redirect("categories.php", ["error" => "Category $categoryName can not be removed, there are articles in the Category"]);
+      redirect_admin("categories");
     }
   }
 }

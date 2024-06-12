@@ -115,7 +115,7 @@ class Article
   {
     try {
       $sql = "UPDATE articles SET title = :title, summary = :summary, content = :content, category_id = :category_id,
-                    user_id = :user_id, images_id = :images_id, published = :published WHERE id = :id";
+                    user_id = :user_id, images_id = :images_id, published = :published, seo_title = :seo_title WHERE id = :id";
       $test = $this->db->sql_execute($sql, $data);
       return true;
     } catch (PDOException $e) {
@@ -126,8 +126,8 @@ class Article
   public function push(array $data): bool
   {
     try {
-      $sql = "INSERT INTO articles (title, summary, content, category_id, user_id, images_id, published)
-                VALUES (:title, :summary, :content, :category_id, :user_id, :images_id, :published)";
+      $sql = "INSERT INTO articles (title, summary, content, category_id, user_id, images_id, published, seo_title)
+                VALUES (:title, :summary, :content, :category_id, :user_id, :images_id, :published, :seo_title)";
       $this->db->sql_execute($sql, $data);
       return true;
     } catch (PDOException $e) {

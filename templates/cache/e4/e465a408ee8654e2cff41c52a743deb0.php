@@ -102,7 +102,7 @@ class __TwigTemplate_e93c0158c6157f0b2bbc9f190e4ffb44 extends Template
         <a class=\"text-pink-600 hover:text-blue-600\" href=\"";
         // line 32
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["doc_root"] ?? null), "html", null, true);
-        yield "forgot-password\">Reset your password</a>
+        yield "forgot-password\">Forgot password</a>
         <button class=\"text-white w-1/3 bg-blue-500 p-3 rounded-md hover:bg-pink-600 m-5\" type=\"submit\">Login</button>
     </form>
 </main>
@@ -168,7 +168,7 @@ class __TwigTemplate_e93c0158c6157f0b2bbc9f190e4ffb44 extends Template
             <span class=\"text-red-500\">{{errors.password|raw}}</span>
         </div>
 
-        <a class=\"text-pink-600 hover:text-blue-600\" href=\"{{doc_root}}forgot-password\">Reset your password</a>
+        <a class=\"text-pink-600 hover:text-blue-600\" href=\"{{doc_root}}forgot-password\">Forgot password</a>
         <button class=\"text-white w-1/3 bg-blue-500 p-3 rounded-md hover:bg-pink-600 m-5\" type=\"submit\">Login</button>
     </form>
 </main>

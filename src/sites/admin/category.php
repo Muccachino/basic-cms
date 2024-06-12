@@ -41,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $data["category"]["name"] = filter_input(INPUT_POST, "name");
   $data["category"]["description"] = filter_input(INPUT_POST, "description");
   $data["category"]["navigation"] = filter_input(INPUT_POST, "navigation", FILTER_VALIDATE_BOOLEAN);
+  $data["category"]["seo_title"] = create_seo_name($data["category"]["name"]);
 
   if (!$data["category"]["navigation"]) {
     $data["category"]["navigation"] = false;
@@ -68,10 +69,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if ($data["id"]) {
         $bindings["id"] = $data["id"];
         $cms->getCategory()->update($bindings);
-        redirect("categories", ["success" => "category successfully saved"]);
+        redirect_admin("categories");
       } else {
         $cms->getCategory()->push($bindings);
-        redirect("categories", ["success" => "category successfully saved"]);
+        redirect_admin("categories");
 
       }
     } catch (PDOException $e) {

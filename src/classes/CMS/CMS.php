@@ -11,6 +11,7 @@ class CMS
   protected Image $image;
   protected Session $session;
   protected Token $token;
+  protected Comment $comment;
 
   public function __construct(string $dsn, string $user_name, string $password)
   {
@@ -67,5 +68,13 @@ class CMS
       $this->session = new Session();
     }
     return $this->session;
+  }
+
+  public function getComment(): Comment
+  {
+    if (!isset($this->comment)) {
+      $this->comment = new Comment($this->db);
+    }
+    return $this->comment;
   }
 }
